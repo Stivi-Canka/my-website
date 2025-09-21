@@ -227,14 +227,22 @@ function hidePageLoader() {
     }
 }
 
-// Show loader only when navigating to subpages (not home or downloads)
+// Prevent loader from showing on page refresh
+if (performance.navigation.type === 1) {
+    // Page was refreshed, hide loader immediately
+    hidePageLoader();
+}
+
+// Show loader only when navigating to subpages (not home, downloads, or external links)
 document.addEventListener('click', (e) => {
     if (e.target.tagName === 'A' && e.target.href && !e.target.href.includes('#')) {
         const isGoingToHome = e.target.href.includes('index.html');
         const isDownloadLink = e.target.hasAttribute('download') || e.target.href.includes('.pdf') || e.target.href.includes('.doc') || e.target.href.includes('.zip');
+        const isExternalLink = e.target.href.startsWith('http') && !e.target.href.includes(window.location.hostname);
+        const isSocialMediaLink = e.target.href.includes('linkedin.com') || e.target.href.includes('instagram.com') || e.target.href.includes('github.com') || e.target.href.includes('mailto:');
         
-        if (!isGoingToHome && !isDownloadLink) {
-            // Show loader for subpages (but not downloads)
+        if (!isGoingToHome && !isDownloadLink && !isExternalLink && !isSocialMediaLink) {
+            // Show loader for internal subpages only
             const loader = document.getElementById('page-loader');
             if (loader) {
                 loader.classList.remove('hidden');
@@ -306,10 +314,20 @@ document.addEventListener('DOMContentLoaded', () => {
         typewriterEffect();
     }, 2000);
     
-    // Hide loader quickly
+    // Hide loader quickly with multiple fallbacks
     setTimeout(() => {
         hidePageLoader();
     }, 1000);
+    
+    // Fallback: Hide loader after 3 seconds regardless
+    setTimeout(() => {
+        hidePageLoader();
+    }, 3000);
+    
+    // Fallback: Hide loader when page is fully loaded
+    window.addEventListener('load', () => {
+        hidePageLoader();
+    });
 });
 
 // Parallax effect for hero section

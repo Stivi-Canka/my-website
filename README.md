@@ -1,12 +1,11 @@
 # Stivi Canka - Personal Website
 
-A modern, responsive personal website built with vanilla HTML, CSS, and JavaScript. Features a clean design, smooth animations, and automated content management through Notion integration.
+A modern, responsive personal website built with vanilla HTML, CSS, and JavaScript. Features a clean design and smooth animations.
 
 ## Features
 
 - **Responsive Design**: Optimized for desktop, tablet, and mobile devices
 - **Modern UI/UX**: Clean, minimalist design with smooth animations
-- **Notion Integration**: Automated content sync from Notion databases
 - **Performance Optimized**: Fast loading times and smooth interactions
 - **Accessibility**: WCAG compliant with proper semantic HTML
 - **SEO Ready**: Optimized meta tags and structured data
@@ -34,16 +33,10 @@ my-website/
 - **HTML5**: Semantic markup and modern web standards
 - **CSS3**: Flexbox, Grid, animations, and responsive design
 - **JavaScript (ES6+)**: Modern JavaScript with async/await
-- **Notion API**: Content management and automation
 - **Font Awesome**: Icons and visual elements
 - **Google Fonts**: Typography (JetBrains Mono, IBM Plex)
 
 ## Getting Started
-
-### Prerequisites
-
-- Node.js (v14 or higher)
-- A Notion account (for content management)
 
 ### Installation
 
@@ -54,18 +47,7 @@ git clone https://github.com/yourusername/my-website.git
 cd my-website
 ```
 
-2. Install dependencies:
-
-```bash
-npm install
-```
-
-3. Set up Notion integration (optional):
-
-   - Follow the guide in `docs/SETUP_NOTION_INTEGRATION.md`
-   - Create a `.env` file with your Notion credentials
-
-4. Run the development server:
+2. Run the development server:
 
 ```bash
 # For local development, you can use any static server
@@ -73,18 +55,17 @@ npm install
 python -m http.server 8000
 
 # Or with Node.js:
-npx serve .
+npm start
 ```
 
 ## Content Management
 
-The website supports automated content management through Notion:
+The website content is managed through static HTML files:
 
-- **Projects**: Automatically sync from your Notion projects database
-- **Blog Posts**: Manage blog content through Notion
-- **Updates**: Timeline of your professional updates
-
-See `docs/SETUP_NOTION_INTEGRATION.md` for detailed setup instructions.
+- **Projects**: Edit `pages/projects.html` to update your projects
+- **Blog Posts**: Edit `pages/blog.html` to update your blog posts
+- **Updates**: Edit `pages/updates.html` to update your timeline
+- **Photos**: Edit `pages/pics.html` to update your photo gallery
 
 ## Customization
 
@@ -103,7 +84,6 @@ See `docs/SETUP_NOTION_INTEGRATION.md` for detailed setup instructions.
 ### Functionality
 
 - JavaScript functionality is in `js/script.js`
-- Notion integration is in `js/notion-sync.js`
 
 
 ## License
