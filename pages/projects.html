@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Projects - Stivi Canka">
+    <title>Projects - Stivi Canka</title>
+    <link rel="icon" type="image/png" href="../assets/icon.png">
+    <link rel="apple-touch-icon" href="../assets/icon.png">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader" id="page-loader">
+        <div class="spinner">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+
+
+    <div class="page-container">
+        <div class="projects-content">
+            <div class="page-header">
+                <a href="../index.html" class="back-link">
+                    <span class="material-icons">arrow_back_ios</span>
+                    Back
+                </a>
+                <div class="section-label">03. Projects</div>
+            </div>
+            
+            <div class="projects-grid">
+                <!-- Row 1 -->
+                <div class="project-cell">
+                    <div class="project-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>E-Commerce Platform</h3>
+                        <p>A full-stack e-commerce solution with user authentication, payment processing, and admin dashboard.</p>
+                    </div>
+                </div>
+                
+                <div class="project-cell">
+                    <div class="project-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-tasks"></i>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Task Management App</h3>
+                        <p>A responsive task management application with real-time collaboration features and drag-and-drop functionality.</p>
+                    </div>
+                </div>
+                
+                <div class="project-cell">
+                    <div class="project-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Data Visualization Dashboard</h3>
+                        <p>An interactive dashboard for data analysis and visualization with customizable charts and real-time updates.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <script src="../js/script.js"></script>
+    
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p>&copy; Stivi Canka <span id="current-year">2025</span></p>
+    </footer>
+    
+    <script>
+        // Update year automatically
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+{
+  "name": "my-website-notion-sync",
+  "version": "1.0.0",
+  "description": "Automated Notion database sync for personal website",
+  "main": "notion-sync.js",
+  "scripts": {
+    "sync": "node notion-sync.js",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "dependencies": {
+    "@notionhq/client": "^2.2.15"
+  },
+  "devDependencies": {},
+  "keywords": [
+    "notion",
+    "api",
+    "automation",
+    "website",
+    "sync"
+  ],
+  "author": "Stivi Canka",
+  "license": "MIT"
+}

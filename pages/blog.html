@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blog - Stivi Canka">
+    <title>Blog - Stivi Canka</title>
+    <link rel="icon" type="image/png" href="../assets/icon.png">
+    <link rel="apple-touch-icon" href="../assets/icon.png">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader" id="page-loader">
+        <div class="spinner">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+    <div class="page-container">
+        <div class="blog-content">
+            <div class="page-header">
+                <a href="../index.html" class="back-link">
+                    <span class="material-icons">arrow_back_ios</span>
+                    Back
+                </a>
+                <div class="section-label">04. Blog</div>
+            </div>
+            
+            <div class="blog-posts-list">
+                <div class="blog-post-item">
+                    <a href="blog-posts/arabesques-science-art.html" class="blog-post-link">
+                        <h2 class="blog-post-title">Arabesques: A Science-Inspired Generative Art Project</h2>
+                    </a>
+                    <div class="blog-post-date">Nov 29, 2022</div>
+                </div>
+                
+                <div class="blog-post-item">
+                    <a href="blog-posts/teaching-coding-girls.html" class="blog-post-link">
+                        <h2 class="blog-post-title">What I Learned Teaching 20 High School Girls How to Code</h2>
+                    </a>
+                    <div class="blog-post-date">Sep 14, 2022</div>
+                </div>
+                
+                <div class="blog-post-item">
+                    <a href="blog-posts/farewell-mit.html" class="blog-post-link">
+                        <h2 class="blog-post-title">A Farewell to MIT</h2>
+                    </a>
+                    <div class="blog-post-date">Mar 11, 2022</div>
+                </div>
+                
+                <div class="blog-post-item">
+                    <a href="blog-posts/cern-science-experiment.html" class="blog-post-link">
+                        <h2 class="blog-post-title">CERN, the World's Largest Science Experiment</h2>
+                    </a>
+                    <div class="blog-post-date">Oct 14, 2021</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../js/script.js"></script>
+    
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p>&copy; Stivi Canka <span id="current-year">2025</span></p>
+    </footer>
+    
+    <script>
+        // Update year automatically
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Updates - Stivi Canka - Latest news and updates">
+    <title>Updates - Stivi Canka</title>
+    <link rel="icon" type="image/png" href="../assets/icon.png">
+    <link rel="apple-touch-icon" href="../assets/icon.png">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader" id="page-loader">
+        <div class="spinner">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+    <div class="page-container">
+        <div class="updates-content">
+            <div class="page-header">
+                <a href="../index.html" class="back-link">
+                    <span class="material-icons">arrow_back_ios</span>
+                    Back
+                </a>
+                <div class="section-label">02. Updates</div>
+            </div>
+
+            <div class="updates-section">
+                <div class="updates-timeline">
+                    <div class="update-item">
+                        <div class="update-content" onclick="toggleExpand(this)">
+                            <div class="update-date">December 2024</div>
+                            <h3>Website Redesign</h3>
+                            <div class="update-preview">Completely redesigned my personal website with a modern, minimalist approach...</div>
+                            <div class="update-full-text">Completely redesigned my personal website with a modern, minimalist approach. Added new sections including this updates page and a photos gallery. The new design focuses on clean typography, improved navigation, and better user experience across all devices.</div>
+                            <span class="read-more-btn">Read more</span>
+                        </div>
+                    </div>
+
+                    <div class="update-item">
+                        <div class="update-content" onclick="toggleExpand(this)">
+                            <div class="update-date">November 2024</div>
+                            <h3>New Project Launch</h3>
+                            <div class="update-preview">Launched a new data analysis project focusing on economic trends and market analysis...</div>
+                            <div class="update-full-text">Launched a new data analysis project focusing on economic trends and market analysis. The project combines my background in economics with modern data science techniques. Using Python, R, and advanced statistical methods to analyze market patterns and predict future trends.</div>
+                            <span class="read-more-btn">Read more</span>
+                        </div>
+                    </div>
+
+                    <div class="update-item">
+                        <div class="update-content" onclick="toggleExpand(this)">
+                            <div class="update-date">October 2024</div>
+                            <h3>Professional Development</h3>
+                            <div class="update-preview">Completed advanced courses in machine learning and artificial intelligence...</div>
+                            <div class="update-full-text">Completed advanced courses in machine learning and artificial intelligence. Expanding my technical skills to stay current with industry trends. Focused on deep learning, neural networks, and practical applications in business contexts.</div>
+                            <span class="read-more-btn">Read more</span>
+                        </div>
+                    </div>
+
+                    <div class="update-item">
+                        <div class="update-content" onclick="toggleExpand(this)">
+                            <div class="update-date">September 2024</div>
+                            <h3>Community Engagement</h3>
+                            <div class="update-preview">Started contributing to open-source projects and participating in local tech meetups...</div>
+                            <div class="update-full-text">Started contributing to open-source projects and participating in local tech meetups. Building connections within the developer community. Actively sharing knowledge and collaborating on innovative projects with fellow developers.</div>
+                            <span class="read-more-btn">Read more</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/script.js"></script>
+    
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p>&copy; Stivi Canka <span id="current-year">2025</span></p>
+    </footer>
+    
+    <script>
+        // Update year automatically
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        
+        // Scroll-triggered animations for timeline items
+        function animateOnScroll() {
+            const updateItems = document.querySelectorAll('.update-item');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add('animate');
+                        }, index * 200); // Stagger the animations
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+            
+            updateItems.forEach(item => {
+                observer.observe(item);
+            });
+        }
+        
+        // Initialize animations when page loads
+        document.addEventListener('DOMContentLoaded', animateOnScroll);
+        
+        // Toggle expandable text
+        function toggleExpand(element) {
+            const readMoreBtn = element.querySelector('.read-more-btn');
+            if (element.classList.contains('expanded')) {
+                element.classList.remove('expanded');
+                readMoreBtn.textContent = 'Read more';
+            } else {
+                element.classList.add('expanded');
+                readMoreBtn.textContent = 'Read less';
+            }
+        }
+    </script>
+</body>
+</html>

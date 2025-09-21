@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Photos - Stivi Canka - Personal photos and memories">
+    <title>Photos - Stivi Canka</title>
+    <link rel="icon" type="image/png" href="../assets/icon.png">
+    <link rel="apple-touch-icon" href="../assets/icon.png">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        .pics-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 1rem;
+            padding-top: 2rem;
+            background: var(--bg-primary);
+        }
+
+        .back-link {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--text-primary);
+        }
+
+        .image-viewer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .desktop-nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .mobile-content {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        .mobile-nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .nav-arrow {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 1rem;
+            transition: color 0.3s ease;
+            opacity: 0.6;
+        }
+
+        .nav-arrow:hover {
+            color: var(--text-primary);
+            opacity: 1;
+        }
+
+        .nav-arrow:disabled {
+            opacity: 0.2;
+            cursor: not-allowed;
+        }
+
+        .image-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            flex: 1;
+        }
+
+        .main-image {
+            max-width: 100%;
+            max-height: 60vh;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-metadata {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            text-align: center;
+            line-height: 1.8;
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+        }
+
+        .image-metadata div {
+            text-decoration: underline;
+            text-decoration-color: rgba(255, 255, 255, 0.3);
+            text-underline-offset: 3px;
+        }
+
+        .image-title {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+            letter-spacing: 0.5px;
+        }
+
+        .image-counter {
+            position: absolute;
+            top: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 768px) {
+            .pics-container {
+                padding-top: 3rem;
+            }
+
+            .desktop-nav {
+                display: none;
+            }
+
+            .mobile-content {
+                display: flex;
+            }
+
+            .nav-arrow {
+                font-size: 1.5rem;
+                padding: 0.5rem;
+            }
+
+            .back-link {
+                top: 1rem;
+                left: 1rem;
+            }
+
+            .image-counter {
+                top: 1rem;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .main-image {
+                max-height: 50vh;
+                object-fit: cover;
+                object-position: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader" id="page-loader">
+        <div class="spinner">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+    <div class="page-container">
+        <div class="pics-container">
+                <a href="../index.html" class="back-link">
+                    <span class="material-icons">arrow_back_ios</span>
+                    Back
+                </a>
+
+            <div class="desktop-nav">
+                <button class="nav-arrow" id="prevBtn" onclick="previousImage()">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+
+                <div class="image-container">
+                    <img id="mainImage" class="main-image" src="" alt="">
+                    <div class="image-metadata">
+                        <div class="image-title" id="imageTitle"></div>
+                        <div id="imageInfo"></div>
+                    </div>
+                </div>
+
+                <button class="nav-arrow" id="nextBtn" onclick="nextImage()">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <div class="mobile-content">
+                <div class="image-container">
+                    <img id="mainImageMobile" class="main-image" src="" alt="">
+                    <div class="image-metadata">
+                        <div class="image-title" id="imageTitleMobile"></div>
+                        <div id="imageInfoMobile"></div>
+                    </div>
+                </div>
+                
+                <div class="mobile-nav">
+                    <button class="nav-arrow" id="prevBtnMobile" onclick="previousImage()">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="nav-arrow" id="nextBtnMobile" onclick="nextImage()">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="image-counter" id="imageCounter"></div>
+        </div>
+    </div>
+
+    <script>
+        // Sample image data - replace with your actual images
+        const images = [
+            {
+                src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop",
+                title: "Mountain Landscape",
+                info: "Location: Swiss Alps\nDate: 2024-01-15"
+            },
+            {
+                src: "https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=800&h=600&fit=crop",
+                title: "Urban Architecture",
+                info: "Location: New York City\nDate: 2024-02-03"
+            },
+            {
+                src: "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=800&h=600&fit=crop",
+                title: "Forest Path",
+                info: "Location: Pacific Northwest\nDate: 2024-02-20"
+            },
+            {
+                src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop",
+                title: "Ocean Sunset",
+                info: "Location: California Coast\nDate: 2024-03-10"
+            },
+            {
+                src: "https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=800&h=600&fit=crop",
+                title: "City Lights",
+                info: "Location: Tokyo, Japan\nDate: 2024-03-25"
+            }
+        ];
+
+        let currentImageIndex = 0;
+
+        function updateImage() {
+            const image = images[currentImageIndex];
+            
+            // Update desktop elements
+            const mainImage = document.getElementById('mainImage');
+            const imageTitle = document.getElementById('imageTitle');
+            const imageInfo = document.getElementById('imageInfo');
+            
+            if (mainImage) {
+                mainImage.src = image.src;
+                mainImage.alt = image.title;
+            }
+            if (imageTitle) imageTitle.textContent = image.title;
+            if (imageInfo) {
+                // Split metadata into separate lines and create divs for each
+                const metadataLines = image.info.split('\n');
+                imageInfo.innerHTML = metadataLines.map(line => `<div>${line}</div>`).join('');
+            }
+            
+            // Update mobile elements
+            const mainImageMobile = document.getElementById('mainImageMobile');
+            const imageTitleMobile = document.getElementById('imageTitleMobile');
+            const imageInfoMobile = document.getElementById('imageInfoMobile');
+            
+            if (mainImageMobile) {
+                mainImageMobile.src = image.src;
+                mainImageMobile.alt = image.title;
+            }
+            if (imageTitleMobile) imageTitleMobile.textContent = image.title;
+            if (imageInfoMobile) {
+                // Split metadata into separate lines and create divs for each
+                const metadataLines = image.info.split('\n');
+                imageInfoMobile.innerHTML = metadataLines.map(line => `<div>${line}</div>`).join('');
+            }
+            
+            // Update counter
+            document.getElementById('imageCounter').textContent = `${currentImageIndex + 1} / ${images.length}`;
+
+            // Update navigation buttons (both desktop and mobile)
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const prevBtnMobile = document.getElementById('prevBtnMobile');
+            const nextBtnMobile = document.getElementById('nextBtnMobile');
+
+            if (prevBtn) prevBtn.disabled = currentImageIndex === 0;
+            if (nextBtn) nextBtn.disabled = currentImageIndex === images.length - 1;
+            if (prevBtnMobile) prevBtnMobile.disabled = currentImageIndex === 0;
+            if (nextBtnMobile) nextBtnMobile.disabled = currentImageIndex === images.length - 1;
+        }
+
+        function nextImage() {
+            if (currentImageIndex < images.length - 1) {
+                currentImageIndex++;
+                updateImage();
+            }
+        }
+
+        function previousImage() {
+            if (currentImageIndex > 0) {
+                currentImageIndex--;
+                updateImage();
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft') {
+                previousImage();
+            } else if (e.key === 'ArrowRight') {
+                nextImage();
+            }
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            updateImage();
+        });
+    </script>
+    <script src="../js/script.js"></script>
+    
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p>&copy; Stivi Canka <span id="current-year">2025</span></p>
+    </footer>
+    
+    <script>
+        // Update year automatically
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

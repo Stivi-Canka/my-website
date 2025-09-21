@@ -1,0 +1,16 @@
+# Enable proper MIME types for PDF downloads
+AddType application/pdf .pdf
+
+# Security headers for file downloads
+<FilesMatch "\.(pdf|doc|docx|zip)$">
+    Header set Content-Disposition "attachment"
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+</FilesMatch>
+
+# CORS headers for local development
+<IfModule mod_headers.c>
+    Header always set Access-Control-Allow-Origin "*"
+    Header always set Access-Control-Allow-Methods "GET, POST, OPTIONS"
+    Header always set Access-Control-Allow-Headers "Content-Type"
+</IfModule>
