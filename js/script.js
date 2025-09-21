@@ -78,6 +78,13 @@ function isValidEmail(email) {
     return emailRegex.test(email);
 }
 
+// Sanitize HTML to prevent XSS
+function sanitizeHTML(str) {
+    const temp = document.createElement('div');
+    temp.textContent = str;
+    return temp.innerHTML;
+}
+
 // Notification system
 function showNotification(message, type = 'info') {
     // Remove existing notifications
@@ -91,7 +98,7 @@ function showNotification(message, type = 'info') {
     notification.className = `notification notification-${type}`;
     notification.innerHTML = `
         <div class="notification-content">
-            <span class="notification-message">${message}</span>
+            <span class="notification-message">${sanitizeHTML(message)}</span>
             <button class="notification-close">&times;</button>
         </div>
     `;
@@ -121,6 +128,11 @@ function showNotification(message, type = 'info') {
 
 // Typing animation for hero title
 function typeWriter(element, text, speed = 100) {
+    if (!element || typeof text !== 'string') {
+        console.warn('typeWriter: Invalid element or text provided');
+        return;
+    }
+    
     let i = 0;
     element.innerHTML = '';
     

@@ -16,6 +16,7 @@ This guide will help you set up automatic synchronization between your Notion da
 ### Step 2: Set Up Your Notion Databases
 
 #### Projects Database Structure
+
 Create a database with these properties:
 
 | Property Name | Type | Description |
@@ -32,6 +33,7 @@ Create a database with these properties:
 | Created | Created time | Auto-generated |
 
 #### Blog Database Structure
+
 Create a database with these properties:
 
 | Property Name | Type | Description |
@@ -64,7 +66,7 @@ Create a database with these properties:
 1. Create a `.env` file in your project root
 2. Add these environment variables:
 
-```
+```bash
 NOTION_TOKEN=secret_your_integration_token_here
 NOTION_PROJECTS_DB_ID=your_projects_database_id
 NOTION_BLOG_DB_ID=your_blog_database_id
@@ -100,6 +102,7 @@ Edit `notion-sync.js` to customize:
 ### Scheduling
 
 You can set up automated syncing using:
+
 - **Cron jobs** on your server
 - **CI/CD pipelines** (GitLab CI, Jenkins, etc.)
 - **Netlify Functions** with scheduled triggers
@@ -119,6 +122,7 @@ For instant updates when you add content to Notion:
 ### Image Optimization
 
 The script can automatically:
+
 - Download images from Notion
 - Optimize them for web
 - Upload to a CDN
@@ -127,6 +131,7 @@ The script can automatically:
 ### Content Caching
 
 Add caching to avoid unnecessary API calls:
+
 - Store last sync timestamp
 - Only fetch changed items
 - Use Notion's `last_edited_time` property
@@ -162,6 +167,7 @@ console.log('Blog posts:', blogPosts);
 ### Monitoring Sync
 
 You can monitor your sync process by:
+
 1. **Local testing**: Run `npm run sync` to test changes
 2. **Log files**: Check console output for any errors
 3. **Automated monitoring**: Set up alerts for failed syncs
@@ -170,6 +176,7 @@ You can monitor your sync process by:
 ## 🚀 Next Steps
 
 Once set up, your website will automatically update whenever you:
+
 - Add new projects to your Notion database
 - Update existing project information
 - Publish new blog posts

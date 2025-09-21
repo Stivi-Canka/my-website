@@ -1,118 +1,111 @@
 # Stivi Canka - Personal Website
 
-A modern, responsive personal website showcasing skills, projects, and experience with tactile sound effects.
+A modern, responsive personal website built with vanilla HTML, CSS, and JavaScript. Features a clean design, smooth animations, and automated content management through Notion integration.
 
-## 🏗️ Project Structure
+## Features
 
-```
+- **Responsive Design**: Optimized for desktop, tablet, and mobile devices
+- **Modern UI/UX**: Clean, minimalist design with smooth animations
+- **Notion Integration**: Automated content sync from Notion databases
+- **Performance Optimized**: Fast loading times and smooth interactions
+- **Accessibility**: WCAG compliant with proper semantic HTML
+- **SEO Ready**: Optimized meta tags and structured data
+
+## Project Structure
+
+```text
 my-website/
-├── index.html              # Main homepage
-├── index-mobile.html       # Mobile-optimized homepage
-├── package.json            # Node.js dependencies
-├── README.md              # This file
-│
-├── assets/                # Static assets
-│   └── Canka_Stivi_Resume.pdf
-│
+├── assets/                 # Images, PDFs, and other static assets
 ├── css/                   # Stylesheets
-│   └── styles.css         # Main stylesheet
-│
 ├── js/                    # JavaScript files
-│   ├── script.js         # Main website functionality
-│   └── notion-sync.js    # Notion integration
-│
-├── pages/                 # Individual pages
-│   ├── blog.html         # Blog page
+├── pages/                 # Individual page HTML files
+│   ├── blog-posts/       # Individual blog post pages
+│   ├── blog.html         # Blog listing page
 │   ├── projects.html     # Projects showcase
 │   ├── resume.html       # Resume/CV page
-│   ├── updates.html      # Updates/news page
-│   └── pics.html         # Photo gallery
-│
-│
-└── docs/                  # Documentation
-    └── SETUP_NOTION_INTEGRATION.md
+│   └── updates.html      # Updates timeline
+├── docs/                 # Documentation
+├── index.html            # Homepage
+└── index-mobile.html     # Mobile-optimized homepage
 ```
 
+## Technologies Used
 
-## 🚀 Features
+- **HTML5**: Semantic markup and modern web standards
+- **CSS3**: Flexbox, Grid, animations, and responsive design
+- **JavaScript (ES6+)**: Modern JavaScript with async/await
+- **Notion API**: Content management and automation
+- **Font Awesome**: Icons and visual elements
+- **Google Fonts**: Typography (JetBrains Mono, IBM Plex)
 
-- **Responsive Design**: Works on desktop, tablet, and mobile
-- **Modern UI**: Clean, professional design with glassmorphism effects
-- **Interactive Elements**: Hover effects and animations
-- **SEO Optimized**: Proper meta tags and semantic HTML
-- **Fast Loading**: Optimized assets and minimal dependencies
-- **Accessibility**: Keyboard navigation and screen reader friendly
+## Getting Started
 
-## 🛠️ Technologies Used
+### Prerequisites
 
-- **HTML5**: Semantic markup
-- **CSS3**: Modern styling with flexbox/grid
-- **JavaScript**: Vanilla JS (no frameworks)
-- **Font Awesome**: Icons
-- **Google Fonts**: Typography
+- Node.js (v14 or higher)
+- A Notion account (for content management)
 
-## 📱 Pages
+### Installation
 
-1. **Home** (`index.html`) - Landing page with navigation
-2. **Resume** (`pages/resume.html`) - Professional experience and skills
-3. **Projects** (`pages/projects.html`) - Portfolio showcase
-4. **Blog** (`pages/blog.html`) - Articles and thoughts
-5. **Updates** (`pages/updates.html`) - Latest news and updates
-6. **Photos** (`pages/pics.html`) - Personal photo gallery
+1. Clone the repository:
 
-## 🔧 Development
-
-### Local Development
 ```bash
-# Start local server
+git clone https://github.com/yourusername/my-website.git
+cd my-website
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+```
+
+3. Set up Notion integration (optional):
+
+   - Follow the guide in `docs/SETUP_NOTION_INTEGRATION.md`
+   - Create a `.env` file with your Notion credentials
+
+4. Run the development server:
+
+```bash
+# For local development, you can use any static server
+# For example, with Python:
 python -m http.server 8000
 
-# Or with Node.js
-npx http-server
-
-# Or with PHP
-php -S localhost:8000
+# Or with Node.js:
+npx serve .
 ```
 
-### File Organization
-- **Root**: Main HTML files and configuration
-- **css/**: All stylesheets and fonts
-- **js/**: All JavaScript functionality
-- **pages/**: Individual page HTML files
-- **assets/**: Static files (PDFs, images)
-- **docs/**: Documentation and setup guides
+## Content Management
 
-## 🎨 Customization
+The website supports automated content management through Notion:
 
-### Adding New Pages
-1. Create HTML file in `pages/` directory
-2. Use existing page structure as template
-3. Update navigation links in `index.html`
-4. Ensure proper CSS and JS paths
+- **Projects**: Automatically sync from your Notion projects database
+- **Blog Posts**: Manage blog content through Notion
+- **Updates**: Timeline of your professional updates
 
-### Modifying Styles
-- Main stylesheet: `css/styles.css`
-- Mobile-specific styles: Inline in `index-mobile.html`
+See `docs/SETUP_NOTION_INTEGRATION.md` for detailed setup instructions.
+
+## Customization
+
+### Styling
+
+- Modify `css/styles.css` for design changes
+- The CSS is organized with clear sections and comments
+- Uses CSS custom properties for easy theming
+
+### Content
+
+- Update HTML files in the `pages/` directory
+- Modify the homepage in `index.html`
+- Add new blog posts in `pages/blog-posts/`
+
+### Functionality
+
+- JavaScript functionality is in `js/script.js`
+- Notion integration is in `js/notion-sync.js`
 
 
-## 📚 Documentation
+## License
 
-- **Notion Integration**: `docs/SETUP_NOTION_INTEGRATION.md`
-
-## 🌐 Deployment
-
-The website is ready for deployment to any static hosting service:
-- Netlify
-- Vercel
-- AWS S3
-- Any web server
-
-## 📄 License
-
-Personal website - All rights reserved.
-
----
-
-**Contact**: stivi.canka@gmail.com  
-**LinkedIn**: [linkedin.com/in/stivi-canka](https://linkedin.com/in/stivi-canka)  
-**Location**: Toronto, Ontario, Canada
+This project is open source and available under the [MIT License](LICENSE).
