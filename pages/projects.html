@@ -3,12 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Projects - Stivi Canka">
-    <title>Projects - Stivi Canka</title>
+    <meta name="description" content="Explore Stivi Canka's projects including academic research, Bank of Canada Governor's Challenge, and Albanian Trailblazers initiatives. Expert in finance, mathematics, statistics, and community leadership.">
+    <meta name="keywords" content="Stivi Canka, projects, academic research, Bank of Canada, Albanian Trailblazers, economics research, Dalhousie University, finance, mathematics, statistics, computer science, engineering, community work, volunteering, quantitative finance, econometrics, data analysis">
+    <title>Projects - Stivi Canka | Research, Finance & Community Initiatives</title>
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://stivicanka.com/pages/projects.html">
+    <meta property="og:title" content="Projects - Stivi Canka | Research, Finance & Community Initiatives">
+    <meta property="og:description" content="Explore Stivi Canka's projects including academic research, Bank of Canada Governor's Challenge, and Albanian Trailblazers initiatives. Expert in finance, mathematics, statistics, and community leadership.">
+    <meta property="og:image" content="https://stivicanka.com/assets/icon.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://stivicanka.com/pages/projects.html">
     <link rel="icon" type="image/png" href="../assets/icon.png">
     <link rel="apple-touch-icon" href="../assets/icon.png">
     <link rel="stylesheet" href="../css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
@@ -38,56 +49,53 @@
             </div>
             
             <div class="projects-grid">
-                <!-- Row 1 -->
-                <div class="project-cell">
-                    <div class="project-image">
-                        <div class="image-placeholder">
-                            <i class="fas fa-shopping-cart"></i>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Coming Soon</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    </div>
-                </div>
-                
-                <div class="project-cell">
-                    <div class="project-image">
-                        <div class="image-placeholder">
-                            <i class="fas fa-tasks"></i>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Coming Soon</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    </div>
-                </div>
-                
-                <div class="project-cell">
-                    <div class="project-image">
-                        <div class="image-placeholder">
-                            <i class="fas fa-chart-bar"></i>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Coming Soon</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    </div>
-                </div>
-                
+                <!-- Projects will be dynamically loaded here -->
             </div>
+
+            <!-- Project Modal -->
+            <div class="project-modal" id="project-modal">
+                <div class="modal-backdrop" id="modal-backdrop"></div>
+                <div class="modal-content">
+                    <button class="modal-close" id="modal-close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    <div class="modal-image-container">
+                        <div class="modal-image" id="modal-image">
+                            <img src="" alt="Project Image" class="modal-img" id="modal-img">
+                            <button class="carousel-btn carousel-prev" id="carousel-prev">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="carousel-btn carousel-next" id="carousel-next">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                            <div class="carousel-indicators" id="carousel-indicators">
+                                <!-- Indicators will be generated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-info" id="modal-info">
+                        <h2 id="modal-title">Coming Soon</h2>
+                        <p id="modal-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    </div>
+                    <div class="modal-skills-section" id="modal-skills-section">
+                        <!-- Skills will be placed here -->
+                    </div>
+                    <div class="modal-actions" id="modal-actions">
+                        <!-- Links and downloads will be placed here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="page-footer">
+                <p>@ Stivi Canka 2025</p>
+            </div>
+
         </div>
     </div>
     <script src="../js/script.js"></script>
+    <script src="../js/project-loader.js"></script>
     
-    <!-- Footer -->
-    <footer class="site-footer">
-        <p>&copy; Stivi Canka <span id="current-year">2025</span></p>
-    </footer>
     
-    <script>
-        // Update year automatically
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-    </script>
 </body>
 </html>

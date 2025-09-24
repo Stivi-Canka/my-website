@@ -6,9 +6,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
-            window.scrollTo({
-                top: target.offsetTop,
-                behavior: 'smooth'
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
             });
         }
     });
@@ -39,6 +39,20 @@ document.addEventListener('DOMContentLoaded', () => {
         el.style.transform = 'translateY(30px)';
         el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
         observer.observe(el);
+    });
+    
+    // Update current year in footer
+    const currentYearElement = document.getElementById('current-year');
+    if (currentYearElement) {
+        currentYearElement.textContent = new Date().getFullYear();
+    }
+    
+    // Update current year in page footer elements
+    const pageFooterElements = document.querySelectorAll('.page-footer p');
+    pageFooterElements.forEach(element => {
+        if (element.textContent.includes('2025')) {
+            element.textContent = element.textContent.replace('2025', new Date().getFullYear());
+        }
     });
 });
 
@@ -147,7 +161,7 @@ function typeWriter(element, text, speed = 100) {
     type();
 }
 
-// Real-time clock
+// Real-time clock (only if element exists)
 function updateTime() {
     const timeElement = document.getElementById('current-time');
     if (timeElement) {
@@ -162,19 +176,22 @@ function updateTime() {
     }
 }
 
-// Update time every second
-setInterval(updateTime, 1000);
+// Update time every second (only if clock element exists)
+if (document.getElementById('current-time')) {
+    setInterval(updateTime, 1000);
+}
 
 // Animated text phrases with IBM Plex Mono font - Sequential order starting with "wears many hats"
 const animatedPhrases = [
     { text: "wears many hats.", font: "'IBM Plex Mono', monospace" },
-    { text: "writes elegant solutions.", font: "'IBM Plex Mono', monospace" },
+    { text: "derives insights from complex data.", font: "'IBM Plex Mono', monospace" },
     { text: "turns caffeine into clean code.", font: "'IBM Plex Mono', monospace" },
+    { text: "believes in value investing.", font: "'IBM Plex Mono', monospace" },
     { text: "finds beauty in Euler's number.", font: "'IBM Plex Mono', monospace" },
-    { text: "builds scalable architectures.", font: "'IBM Plex Mono', monospace" },
-    { text: "optimizes for performance.", font: "'IBM Plex Mono', monospace" },
-    { text: "debugs with surgical precision.", font: "'IBM Plex Mono', monospace" },
-    { text: "crafts pixel-perfect interfaces.", font: "'IBM Plex Mono', monospace" }
+    { text: "rejects null hypotheses confidently.", font: "'IBM Plex Mono', monospace" },
+    { text: "solves PDEs with a cup of tea.", font: "'IBM Plex Mono', monospace" },
+    { text: "achieves Pareto optimality daily.", font: "'IBM Plex Mono', monospace" },
+    { text: "solves optimization problems elegantly.", font: "'IBM Plex Mono', monospace" }
 ];
 
 let currentPhraseIndex = 1;
@@ -219,11 +236,17 @@ function typewriterEffect() {
 }
 
 
-// Simple loader functionality
+// Simple loader functionality with error handling
 function hidePageLoader() {
     const loader = document.getElementById('page-loader');
     if (loader) {
         loader.classList.add('hidden');
+        // Remove loader from DOM after animation completes
+        setTimeout(() => {
+            if (loader.parentNode) {
+                loader.parentNode.removeChild(loader);
+            }
+        }, 500);
     }
 }
 
@@ -350,26 +373,7 @@ document.querySelectorAll('.skill-item').forEach(item => {
     });
 });
 
-// Project cards 3D tilt effect
-document.querySelectorAll('.project-card').forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        
-        const rotateX = (y - centerY) / 10;
-        const rotateY = (centerX - x) / 10;
-        
-        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
-    });
-    
-    card.addEventListener('mouseleave', () => {
-        card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
-    });
-});
+// Project cards hover effect (removed 3D tilt)
 
 // Smooth reveal animation for sections
 const revealElements = document.querySelectorAll('section');
@@ -389,5 +393,204 @@ revealElements.forEach(element => {
 // Loading animation
 window.addEventListener('load', () => {
     document.body.classList.add('loaded');
+});
+
+
+// Project Modal Functionality
+document.addEventListener('DOMContentLoaded', () => {
+    const projectCards = document.querySelectorAll('.project-card');
+    const modal = document.getElementById('project-modal');
+    const modalBackdrop = document.getElementById('modal-backdrop');
+    const modalClose = document.getElementById('modal-close');
+    const modalImage = document.getElementById('modal-image');
+    const modalTitle = document.getElementById('modal-title');
+    const modalDescription = document.getElementById('modal-description');
+    
+    console.log('Modal elements found:', {
+        projectCards: projectCards.length,
+        modal: !!modal,
+        modalBackdrop: !!modalBackdrop,
+        modalClose: !!modalClose,
+        modalTitle: !!modalTitle,
+        modalDescription: !!modalDescription
+    });
+
+    // Store full descriptions for modal access and apply fade effect
+    function storeFullDescriptions() {
+        const descriptions = document.querySelectorAll('.project-info p');
+        
+        descriptions.forEach(description => {
+            const fullText = description.textContent;
+            // Store full text in data attribute for modal access
+            description.setAttribute('data-full-text', fullText);
+            
+            // Add project-description class to all descriptions for fade effect
+            description.classList.add('project-description');
+        });
+    }
+    
+    // Initialize description storage
+    storeFullDescriptions();
+
+    // Carousel functionality
+    let currentImageIndex = 0;
+    let currentImages = [];
+    
+    function updateCarouselImages(images) {
+        currentImages = images;
+        currentImageIndex = 0;
+        updateCarouselDisplay();
+        updateCarouselIndicators();
+    }
+    
+    function updateCarouselDisplay() {
+        const modalImg = document.getElementById('modal-img');
+        if (modalImg && currentImages.length > 0) {
+            modalImg.src = currentImages[currentImageIndex];
+        }
+    }
+    
+    function updateCarouselIndicators() {
+        const indicatorsContainer = document.getElementById('carousel-indicators');
+        if (!indicatorsContainer) return;
+        
+        // Clear existing indicators
+        indicatorsContainer.innerHTML = '';
+        
+        // Create indicators for each image
+        currentImages.forEach((_, index) => {
+            const indicator = document.createElement('button');
+            indicator.className = 'carousel-indicator';
+            if (index === currentImageIndex) {
+                indicator.classList.add('active');
+            }
+            
+            indicator.addEventListener('click', () => {
+                currentImageIndex = index;
+                updateCarouselDisplay();
+                updateCarouselIndicators();
+            });
+            
+            indicatorsContainer.appendChild(indicator);
+        });
+    }
+    
+    function nextImage() {
+        if (currentImages.length > 0) {
+            currentImageIndex = (currentImageIndex + 1) % currentImages.length;
+            updateCarouselDisplay();
+            updateCarouselIndicators();
+        }
+    }
+    
+    function prevImage() {
+        if (currentImages.length > 0) {
+            currentImageIndex = (currentImageIndex - 1 + currentImages.length) % currentImages.length;
+            updateCarouselDisplay();
+            updateCarouselIndicators();
+        }
+    }
+
+    // Open modal when project card is clicked
+    projectCards.forEach(card => {
+        card.addEventListener('click', () => {
+            console.log('Card clicked!'); // Debug log
+            
+            const projectId = card.getAttribute('data-project');
+            const projectInfo = card.querySelector('.project-info');
+            const projectImage = card.querySelector('.project-img');
+            const imagesData = card.getAttribute('data-images');
+            
+            // Get project data
+            const title = projectInfo.querySelector('h3').textContent;
+            const descriptionElement = projectInfo.querySelector('p');
+            const imageSrc = projectImage ? projectImage.src : '';
+            
+            // Get full description from stored data
+            const fullDescription = descriptionElement.getAttribute('data-full-text') || descriptionElement.textContent;
+            
+            // Parse images array
+            let images = [];
+            if (imagesData) {
+                try {
+                    images = JSON.parse(imagesData);
+                } catch (e) {
+                    console.error('Error parsing images data:', e);
+                    images = [imageSrc];
+                }
+            } else {
+                images = [imageSrc];
+            }
+            
+            console.log('Modal elements:', { modal, modalTitle, modalDescription }); // Debug log
+            
+            // Update modal content
+            modalTitle.textContent = title;
+            modalDescription.textContent = fullDescription;
+            
+            // Initialize carousel
+            updateCarouselImages(images);
+            
+            // Show modal
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            console.log('Modal should be visible now'); // Debug log
+        });
+    });
+
+    // Close modal functions
+    function closeModal() {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+
+    // Close modal when clicking close button
+    if (modalClose) {
+        modalClose.addEventListener('click', closeModal);
+    }
+
+    // Close modal when clicking backdrop
+    if (modalBackdrop) {
+        modalBackdrop.addEventListener('click', closeModal);
+    }
+
+    // Close modal when pressing Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+    
+    // Carousel button event listeners
+    const carouselPrev = document.getElementById('carousel-prev');
+    const carouselNext = document.getElementById('carousel-next');
+    
+    if (carouselPrev) {
+        carouselPrev.addEventListener('click', (e) => {
+            e.stopPropagation();
+            prevImage();
+        });
+    }
+    
+    if (carouselNext) {
+        carouselNext.addEventListener('click', (e) => {
+            e.stopPropagation();
+            nextImage();
+        });
+    }
+    
+    // Keyboard navigation for carousel
+    document.addEventListener('keydown', (e) => {
+        if (modal.classList.contains('active')) {
+            if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                prevImage();
+            } else if (e.key === 'ArrowRight') {
+                e.preventDefault();
+                nextImage();
+            }
+        }
+    });
 });
 

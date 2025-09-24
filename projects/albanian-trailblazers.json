@@ -1,0 +1,36 @@
+{
+    "id": "albanian-trailblazers",
+    "date": "2024-02-01",
+    "title": "Albanian Trailblazers",
+    "role": "Founder & President",
+    "projectDate": "May 2023 - Present",
+    "description": "Albanian Trailblazers is a dynamic, youth-led non-governmental organization (NGO) that I founded and currently serve as President. Our mission is to empower Albanian students and promote educational advancement by creating a global network of talented Albanian students studying abroad who serve as mentors and role models. Our membership is composed of students from elite universities such as MIT, Oxford, Harvard, Yale, and more.\n\nAs Founder and President, I have played a significant role in designing and launching the first global Albanian student mentorship program, which connected 30+ mentors with 100+ students across 20+ countries in the latest mentorship cycle.\n\nBeyond the mentorship program, I have been involved in coordinating various initiatives including professional and educational workshops covering areas such as resume building and data science fundamentals. I was also part of the team that organized our inaugural Albanian Trailblazers Symposium in Tirana, which brought together over 30 passionate young Albanians for inspiring keynote presentations, interactive sessions, and meaningful networking opportunities.\n\nAdditionally, I serve as Editor-in-Chief of The Monthly Trailblazer magazine, overseeing content creation, editorial direction, and publication management. The magazine features inspiring stories of Albanian professionals, educational resources, community highlights, and thought-provoking articles that connect and empower our growing global community.\n\nThrough these multifaceted initiatives, Albanian Trailblazers has created a vibrant network dedicated to uplifting the next generation of Albanian students in their educational and professional journeys, fostering meaningful connections and opportunities for growth within the Albanian diaspora.",
+    "links": [
+        {
+            "text": "Albanian Trailblazers Website",
+            "url": "https://www.albaniantrailblazers.com/"
+        },
+        {
+            "text": "So you want to become a Data Scientist? Albanian Trailblazers x DAIT",
+            "url": "https://www.albaniantrailblazers.com/post/so-you-want-to-become-a-data-scientist-albanian-trailblazers-x-dait"
+        },
+        {
+            "text": "Download The Monthly Magazine [PDF]",
+            "url": "../assets/The Monthly Trailblazer - January, 2025.pdf"
+        }
+    ],
+    "images": [
+        "albanian-trailblazers-magazine/01-unyt-event-main.JPG",
+        "albanian-trailblazers-magazine/02-unyt-event-attendees.JPG",
+        "albanian-trailblazers-magazine/06-homecoming-event-poster.jpeg",
+        "albanian-trailblazers-magazine/04-mentors.png",
+        "albanian-trailblazers-magazine/05-data-science-workshop-poster.jpeg",
+        "albanian-trailblazers-magazine/07-trailblazer-magazine-cover.png"
+    ],
+    "skills": [
+        "Leadership",
+        "Strategic Planning",
+        "Mentorship",
+        "Community Building"
+    ]
+}

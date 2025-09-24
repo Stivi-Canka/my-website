@@ -1,0 +1,12 @@
+{
+  "id": "honors-thesis-award",
+  "date": "2024-04-15T12:00:00",
+  "title": "Best Honors Thesis Award - Dalhousie Economics Department",
+  "preview": "Last Friday, I was given the amazing opportunity to present the findings of my honors thesis to faculty and students from the Dalhousie University Economics Department, ultimately being awarded \"The Best Honors Thesis Award\" for the 2023-2024 academic year.",
+  "fullText": "Last Friday, I was given the amazing opportunity to present the findings of my honors thesis to faculty and students from the Dalhousie University Economics Department, ultimately being awarded \"The Best Honors Thesis Award\" for the 2023-2024 academic year.\n\nMy study was focused on evaluating the impact of interest rate uncertainty on the Canadian economy. I used the quarterly volatility in daily returns for three-month Canadian treasury bills as a proxy for interest rate uncertainty, and my findings suggested that increases in interest rate uncertainty have a negative effect on Gross Domestic Product and Gross Fixed Capital Formation, with more uncertain effects on short-term interest rate and inflation levels.",
+  "featured": true,
+  "images": [
+    "honours-thesis.jpeg"
+  ],
+  "documents": []
+}

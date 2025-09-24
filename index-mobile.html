@@ -10,7 +10,7 @@
     <link rel="icon" type="image/png" href="assets/icon.png">
     <link rel="apple-touch-icon" href="assets/icon.png">
     <link rel="stylesheet" href="css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=IBM+Plex+Mono:wght@300;400;500;600;700&family=IBM+Plex+Serif:wght@300;400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=IBM+Plex+Mono:wght@300;400;500;600;700&family=IBM+Plex+Serif:wght@300;400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
@@ -142,6 +142,7 @@
             font-weight: 400;
             line-height: 1.5;
             margin: 0;
+            font-family: 'Space Mono', monospace;
         }
 
         .mobile-navigation {
@@ -440,7 +441,7 @@
                 <a href="pages/updates.html" class="mobile-nav-item">02. Updates</a>
                 <a href="pages/projects.html" class="mobile-nav-item">03. Projects</a>
                 <a href="pages/blog.html" class="mobile-nav-item">04. Blog</a>
-                <a href="pages/pics.html" class="mobile-nav-item">05. Pics</a>
+                <a href="pages/media.html" class="mobile-nav-item">05. Media</a>
             </div>
             
         </div>
@@ -495,16 +496,17 @@
 
     <script>
 
-        // Mobile text animation with consistent Inter font - Sequential order starting with "wears many hats"
+        // Mobile text animation with consistent IBM Plex Mono font - Sequential order starting with "wears many hats"
         const mobileTexts = [
             { text: "wears many hats.", font: "'IBM Plex Mono', monospace" },
-            { text: "writes elegant solutions.", font: "'IBM Plex Mono', monospace" },
+            { text: "derives insights from complex data.", font: "'IBM Plex Mono', monospace" },
             { text: "turns caffeine into clean code.", font: "'IBM Plex Mono', monospace" },
+            { text: "believes in value investing.", font: "'IBM Plex Mono', monospace" },
             { text: "finds beauty in Euler's number.", font: "'IBM Plex Mono', monospace" },
-            { text: "builds scalable architectures.", font: "'IBM Plex Mono', monospace" },
-            { text: "optimizes for performance.", font: "'IBM Plex Mono', monospace" },
-            { text: "debugs with surgical precision.", font: "'IBM Plex Mono', monospace" },
-            { text: "crafts pixel-perfect interfaces.", font: "'IBM Plex Mono', monospace" }
+            { text: "rejects null hypotheses confidently.", font: "'IBM Plex Mono', monospace" },
+            { text: "solves PDEs with a cup of tea.", font: "'IBM Plex Mono', monospace" },
+            { text: "achieves Pareto optimality daily.", font: "'IBM Plex Mono', monospace" },
+            { text: "solves optimization problems elegantly.", font: "'IBM Plex Mono', monospace" }
         ];
         
         let mobileCurrentIndex = 1;

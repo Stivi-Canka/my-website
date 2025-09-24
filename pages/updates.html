@@ -3,12 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Updates - Stivi Canka - Latest news and updates">
-    <title>Updates - Stivi Canka</title>
+    <meta name="description" content="Latest updates and news from Stivi Canka including career milestones, Albanian Trailblazers initiatives, and professional achievements in finance, mathematics, statistics, and community work.">
+    <meta name="keywords" content="Stivi Canka, updates, news, career, Albanian Trailblazers, KPMG, TD Bank, Dalhousie University, achievements, finance, mathematics, statistics, computer science, engineering, community work, volunteering, Albanian professionals, quantitative finance, econometrics">
+    <title>Updates - Stivi Canka | Career Milestones & Community Achievements</title>
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://stivicanka.com/pages/updates.html">
+    <meta property="og:title" content="Updates - Stivi Canka | Career Milestones & Community Achievements">
+    <meta property="og:description" content="Latest updates and news from Stivi Canka including career milestones, Albanian Trailblazers initiatives, and professional achievements in finance, mathematics, statistics, and community work.">
+    <meta property="og:image" content="https://stivicanka.com/assets/icon.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://stivicanka.com/pages/updates.html">
     <link rel="icon" type="image/png" href="../assets/icon.png">
     <link rel="apple-touch-icon" href="../assets/icon.png">
     <link rel="stylesheet" href="../css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
@@ -36,62 +47,29 @@
             </div>
 
             <div class="updates-section">
-                <div class="updates-timeline">
-                    <div class="update-item">
-                        <div class="update-content" onclick="toggleExpand(this)">
-                            <div class="update-date">December 2024</div>
-                            <h3>Placeholder Content</h3>
-                            <div class="update-preview">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</div>
-                            <div class="update-full-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</div>
-                            <span class="read-more-btn">Read more</span>
-                        </div>
-                    </div>
-
-                    <div class="update-item">
-                        <div class="update-content" onclick="toggleExpand(this)">
-                            <div class="update-date">November 2024</div>
-                            <h3>Placeholder Content</h3>
-                            <div class="update-preview">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</div>
-                            <div class="update-full-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</div>
-                            <span class="read-more-btn">Read more</span>
-                        </div>
-                    </div>
-
-                    <div class="update-item">
-                        <div class="update-content" onclick="toggleExpand(this)">
-                            <div class="update-date">October 2024</div>
-                            <h3>Placeholder Content</h3>
-                            <div class="update-preview">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</div>
-                            <div class="update-full-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</div>
-                            <span class="read-more-btn">Read more</span>
-                        </div>
-                    </div>
-
-                    <div class="update-item">
-                        <div class="update-content" onclick="toggleExpand(this)">
-                            <div class="update-date">September 2024</div>
-                            <h3>Placeholder Content</h3>
-                            <div class="update-preview">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</div>
-                            <div class="update-full-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</div>
-                            <span class="read-more-btn">Read more</span>
-                        </div>
-                    </div>
+                <div class="updates-filter-container">
+                    <button id="featured-filter" class="filter-btn" onclick="toggleFeaturedFilter()">
+                        <span class="material-icons filter-icon">filter_list</span>
+                        <span class="filter-text">Filter Major Updates</span>
+                    </button>
                 </div>
-
+                <div class="updates-timeline">
+                    <!-- Updates will be dynamically loaded here -->
+                </div>
             </div>
+
+            <!-- Footer -->
+            <div class="page-footer">
+                <p>@ Stivi Canka 2025</p>
+            </div>
+
         </div>
     </div>
 
     <script src="../js/script.js"></script>
-    
-    <!-- Footer -->
-    <footer class="site-footer">
-        <p>&copy; Stivi Canka <span id="current-year">2025</span></p>
-    </footer>
+    <script src="../js/updates-loader.js?v=1.1"></script>
     
     <script>
-        // Update year automatically
-        document.getElementById('current-year').textContent = new Date().getFullYear();
         
         // Scroll-triggered animations for timeline items
         function animateOnScroll() {
@@ -117,17 +95,9 @@
         // Initialize animations when page loads
         document.addEventListener('DOMContentLoaded', animateOnScroll);
         
-        // Toggle expandable text
-        function toggleExpand(element) {
-            const readMoreBtn = element.querySelector('.read-more-btn');
-            if (element.classList.contains('expanded')) {
-                element.classList.remove('expanded');
-                readMoreBtn.textContent = 'Read more';
-            } else {
-                element.classList.add('expanded');
-                readMoreBtn.textContent = 'Read less';
-            }
-        }
+        // Toggle expandable text is now handled by updates-loader.js
     </script>
+    
+    
 </body>
 </html>

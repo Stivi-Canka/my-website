@@ -1,0 +1,29 @@
+{
+    "id": "2025-02-15-bank-of-canada-governors-challenge",
+    "date": "2024-03-01",
+    "title": "Bank of Canada Governor's Challenge",
+    "role": "Team Lead",
+    "projectDate": "September 2022 - November 2023",
+    "description": "I led an interdisciplinary team to a runner-up finish among 26 Canadian universities in the 2023 Bank of Canada Governor's Challenge. The competition required teams to analyze current economic conditions and develop monetary policy recommendations.\n\nI conducted comprehensive analysis of Canadian economic data using data mining techniques, time series regression models, and forecasting methodologies to inform our policy recommendations. The analysis involved processing large datasets and applying statistical methods to identify economic trends and relationships.\n\nI presented our evidence-based policy recommendations to a panel of Bank of Canada economists. The presentation covered our analytical framework, key findings from the data analysis, and specific policy recommendations with supporting quantitative evidence.",
+    "links": [
+        {
+            "text": "BoC Governor's Challenge results - Dalhousie University",
+            "url": "https://www.dal.ca/faculty/science/economics/news-events/news/2023/11/30/boc_governor_s_challenge_results.html"
+        },
+        {
+            "text": "Bank of Canada announces finalists for the ninth annual Governor's Challenge",
+            "url": "https://www.bankofcanada.ca/2023/11/bank-canada-announces-finalists-ninth-annual-governors-challenge/"
+        }
+    ],
+    "images": [
+        "bank-of-canada-governors-challenge/elevated-debt-levels.png",
+        "bank-of-canada-governors-challenge/forecasting-model.png",
+        "bank-of-canada-governors-challenge/supply-and-demand.png"
+    ],
+    "skills": [
+        "Data Mining",
+        "Forecasting Models",
+        "Monetary Policy Analysis",
+        "Statistical Regression"
+    ]
+}

@@ -1,0 +1,16 @@
+{
+  "id": "YYYY-MM-DD-update-name",
+  "date": "YYYY-MM-DD",
+  "title": "Your Update Title Here",
+  "preview": "Brief preview text that will be shown initially (keep under 150 characters)...",
+  "fullText": "Complete text for your update. This will be shown when users click 'Read more'. You can include multiple paragraphs, details about your achievements, projects, or any other updates you want to share.",
+  "featured": false,
+  "images": [
+    "hero-image.jpg",
+    "additional-photo.jpg"
+  ],
+  "documents": [
+    "certificate.pdf",
+    "document.pdf"
+  ]
+}

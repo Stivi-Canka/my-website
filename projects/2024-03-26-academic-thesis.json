@@ -1,0 +1,20 @@
+{
+    "id": "2024-03-26-academic-thesis",
+    "date": "2024-04-01",
+    "title": "Academic Thesis",
+    "role": "Research Author",
+    "projectDate": "September 2023 - April 2024",
+    "description": "In my undergraduate research thesis, I investigated the impact of interest rate uncertainty on the Canadian economy, focusing on how monetary policy volatility affects macroeconomic stability. This research was recognized with the Best Economics Research Paper award for the 2024 graduating class.\n\nMy study employed advanced econometric modeling using a Vector Autoregression with Exogenous Variables (VAR-X) framework to analyze the complex relationships between interest rate volatility and key economic indicators over an extensive 38-year period from 1985 to 2023. I constructed a novel measure of interest rate uncertainty using quarterly volatility in daily returns for three-month Canadian treasury bills, which served as my primary proxy for capturing the unpredictable nature of monetary policy.\n\nIn my analysis, I discovered that increases in interest rate uncertainty have significant negative effects on Gross Domestic Product, with particularly pronounced impacts during periods of economic distress. My research also revealed more nuanced effects on capital accumulation, interest rate levels, and inflation dynamics, providing a comprehensive understanding of how policy uncertainty transmits through the economy.\n\nThe study is particularly relevant in the context of the seismic disruptions caused by the 2008 financial crisis and the COVID-19 pandemic, which fundamentally altered global monetary policy frameworks and introduced unprecedented levels of uncertainty. My findings contribute significantly to the academic literature on monetary policy transmission mechanisms and provide valuable insights for policymakers, central bankers, economists, and financial institutions seeking to understand how interest rate uncertainty affects economic stability in developed economies.\n\nThe research methodology and results have important implications for monetary policy design, risk management strategies, and economic forecasting models.",
+    "download": "../assets/Canka_Stivi_Thesis.pdf",
+    "images": [
+        "academic-thesis/thesis-cover.jpg",
+        "academic-thesis/best-econ-paper.jpeg"
+    ],
+    "skills": [
+        "VAR-X Framework",
+        "Time Series Analysis",
+        "Monetary Policy Research",
+        "R/Stata Programming",
+        "LaTeX"
+    ]
+}

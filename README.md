@@ -65,7 +65,6 @@ The website content is managed through static HTML files:
 - **Projects**: Edit `pages/projects.html` to update your projects
 - **Blog Posts**: Edit `pages/blog.html` to update your blog posts
 - **Updates**: Edit `pages/updates.html` to update your timeline
-- **Photos**: Edit `pages/pics.html` to update your photo gallery
 
 ## Customization
 
