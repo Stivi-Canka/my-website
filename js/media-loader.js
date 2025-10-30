@@ -30,7 +30,10 @@ class MediaLoader {
             this.initializeAnimations();
         } catch (error) {
             console.error('Error initializing media entries:', error);
-            this.showError('Failed to load media entries. Please check your internet connection and try again.');
+            const errorMessage = error instanceof Error 
+                ? `Failed to load media: ${error.message}` 
+                : 'Failed to load media entries. Please check your internet connection and try again.';
+            this.showError(errorMessage);
         }
     }
 
@@ -181,27 +184,30 @@ class MediaLoader {
     }
 
     /**
-     * Escape HTML to prevent XSS
+     * Escape HTML to prevent XSS attacks
      * @param {string} text - Text to escape
-     * @returns {string} Escaped HTML
+     * @returns {string} Escaped HTML safe string
      */
     escapeHtml(text) {
+        if (!text) return '';
         const div = document.createElement('div');
         div.textContent = text;
         return div.innerHTML;
     }
 
     /**
-     * Initialize scroll animations
+     * Initialize scroll animations with Intersection Observer
+     * Uses consistent animation configuration across loaders
      */
     initializeAnimations() {
         const mediaItems = document.querySelectorAll('.media-item');
+        const ANIMATION_DELAY = 200;
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry, index) => {
                 if (entry.isIntersecting) {
                     setTimeout(() => {
                         entry.target.classList.add('animate');
-                    }, index * 200);
+                    }, index * ANIMATION_DELAY);
                 }
             });
         }, {

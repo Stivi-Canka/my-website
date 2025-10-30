@@ -33,7 +33,10 @@ class ProjectLoader {
             this.initializeModal();
         } catch (error) {
             console.error('Error initializing project entries:', error);
-            this.showError('Failed to load project entries. Please check your internet connection and try again.');
+            const errorMessage = error instanceof Error 
+                ? `Failed to load projects: ${error.message}` 
+                : 'Failed to load project entries. Please check your internet connection and try again.';
+            this.showError(errorMessage);
         }
     }
 
@@ -566,16 +569,18 @@ class ProjectLoader {
     }
 
     /**
-     * Initialize scroll animations
+     * Initialize scroll animations with Intersection Observer
+     * Uses consistent animation configuration across loaders
      */
     initializeAnimations() {
         const projectCards = document.querySelectorAll('.project-card');
+        const ANIMATION_DELAY = 200;
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry, index) => {
                 if (entry.isIntersecting) {
                     setTimeout(() => {
                         entry.target.classList.add('animate');
-                    }, index * 200);
+                    }, index * ANIMATION_DELAY);
                 }
             });
         }, {
@@ -632,11 +637,12 @@ class ProjectLoader {
     }
 
     /**
-     * Escape HTML to prevent XSS
+     * Escape HTML to prevent XSS attacks
      * @param {string} text - Text to escape
-     * @returns {string} Escaped HTML
+     * @returns {string} Escaped HTML safe string
      */
     escapeHtml(text) {
+        if (!text) return '';
         const div = document.createElement('div');
         div.textContent = text;
         return div.innerHTML;
