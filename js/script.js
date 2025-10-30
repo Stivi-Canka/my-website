@@ -14,11 +14,37 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+/**
+ * Animation configuration constants
+ * Centralized settings for all animation-related behavior
+ */
+const ANIMATION_CONFIG = {
+    THRESHOLD: 0.1,
+    ROOT_MARGIN: '0px 0px -50px 0px',
+    INITIAL_OPACITY: '0',
+    INITIAL_TRANSFORM: 'translateY(30px)',
+    TRANSITION_DURATION: '0.6s ease',
+    REVEAL_THRESHOLD: 0.1
+};
+
+/**
+ * Timing configuration constants
+ * Centralized settings for delays, timeouts, and intervals
+ */
+const TIMING_CONFIG = {
+    TYPEWRITER_DELAY: 2000,
+    LOADER_TIMEOUT_SHORT: 1000,
+    LOADER_TIMEOUT_LONG: 3000,
+    NOTIFICATION_AUTO_HIDE: 5000,
+    NOTIFICATION_SLIDE_DISTANCE: 400,
+    NOTIFICATION_FADE_DELAY: 100,
+    TIME_UPDATE_INTERVAL: 1000
+};
 
 // Intersection Observer for animations
 const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
+    threshold: ANIMATION_CONFIG.THRESHOLD,
+    rootMargin: ANIMATION_CONFIG.ROOT_MARGIN
 };
 
 const observer = new IntersectionObserver((entries) => {
@@ -30,30 +56,48 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Observe elements for animation
-document.addEventListener('DOMContentLoaded', () => {
+/**
+ * Initialize animation observers for various elements
+ * Sets up intersection observers for fade-in animations
+ */
+function initializeAnimationObservers() {
     const animateElements = document.querySelectorAll('.skill-category, .project-card, .stat, .contact-method');
     
     animateElements.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        el.style.opacity = ANIMATION_CONFIG.INITIAL_OPACITY;
+        el.style.transform = ANIMATION_CONFIG.INITIAL_TRANSFORM;
+        el.style.transition = `opacity ${ANIMATION_CONFIG.TRANSITION_DURATION}, transform ${ANIMATION_CONFIG.TRANSITION_DURATION}`;
         observer.observe(el);
     });
-    
-    // Update current year in footer
+}
+
+/**
+ * Update current year in footer elements
+ * Automatically updates copyright year across the site
+ */
+function updateCurrentYear() {
+    const currentYear = new Date().getFullYear();
     const currentYearElement = document.getElementById('current-year');
     if (currentYearElement) {
-        currentYearElement.textContent = new Date().getFullYear();
+        currentYearElement.textContent = currentYear;
     }
     
     // Update current year in page footer elements
     const pageFooterElements = document.querySelectorAll('.page-footer p');
     pageFooterElements.forEach(element => {
-        if (element.textContent.includes('2025')) {
-            element.textContent = element.textContent.replace('2025', new Date().getFullYear());
+        const text = element.textContent;
+        // Replace any 4-digit year with current year
+        const yearPattern = /@\s*Stivi Canka\s*\d{4}/;
+        if (yearPattern.test(text)) {
+            element.textContent = text.replace(/\d{4}/, currentYear);
         }
     });
+}
+
+// Observe elements for animation
+document.addEventListener('DOMContentLoaded', () => {
+    initializeAnimationObservers();
+    updateCurrentYear();
 });
 
 // Contact form handling
@@ -75,7 +119,7 @@ if (contactForm) {
             return;
         }
         
-        if (!isValidEmail(email)) {
+        if (!Utils.isValidEmail(email)) {
             showNotification('Please enter a valid email address', 'error');
             return;
         }
@@ -86,18 +130,49 @@ if (contactForm) {
     });
 }
 
-// Email validation function
-function isValidEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-}
+/**
+ * Utility functions for validation and security
+ */
+const Utils = {
+    /**
+     * Validates email format
+     * @param {string} email - Email address to validate
+     * @returns {boolean} True if email is valid
+     */
+    isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    },
 
-// Sanitize HTML to prevent XSS
-function sanitizeHTML(str) {
-    const temp = document.createElement('div');
-    temp.textContent = str;
-    return temp.innerHTML;
-}
+    /**
+     * Sanitizes HTML to prevent XSS attacks
+     * @param {string} str - String to sanitize
+     * @returns {string} Sanitized HTML string
+     */
+    sanitizeHTML(str) {
+        const temp = document.createElement('div');
+        temp.textContent = str;
+        return temp.innerHTML;
+    },
+
+    /**
+     * Safely queries DOM element
+     * @param {string} selector - CSS selector
+     * @returns {HTMLElement|null} Element or null if not found
+     */
+    querySelector(selector) {
+        return document.querySelector(selector);
+    },
+
+    /**
+     * Safely queries multiple DOM elements
+     * @param {string} selector - CSS selector
+     * @returns {NodeList} NodeList of elements
+     */
+    querySelectorAll(selector) {
+        return document.querySelectorAll(selector);
+    }
+};
 
 // Notification system
 function showNotification(message, type = 'info') {
@@ -112,8 +187,8 @@ function showNotification(message, type = 'info') {
     notification.className = `notification notification-${type}`;
     notification.innerHTML = `
         <div class="notification-content">
-            <span class="notification-message">${sanitizeHTML(message)}</span>
-            <button class="notification-close">&times;</button>
+            <span class="notification-message">${Utils.sanitizeHTML(message)}</span>
+            <button class="notification-close" aria-label="Close notification">&times;</button>
         </div>
     `;
 
@@ -123,24 +198,30 @@ function showNotification(message, type = 'info') {
     // Animate in
     setTimeout(() => {
         notification.style.transform = 'translateX(0)';
-    }, 100);
+    }, TIMING_CONFIG.NOTIFICATION_FADE_DELAY);
 
     // Close button functionality
     notification.querySelector('.notification-close').addEventListener('click', () => {
-        notification.style.transform = 'translateX(400px)';
+        notification.style.transform = `translateX(${TIMING_CONFIG.NOTIFICATION_SLIDE_DISTANCE}px)`;
         setTimeout(() => notification.remove(), 300);
     });
 
-    // Auto remove after 5 seconds
+    // Auto remove after configured time
     setTimeout(() => {
         if (notification.parentNode) {
-            notification.style.transform = 'translateX(400px)';
+            notification.style.transform = `translateX(${TIMING_CONFIG.NOTIFICATION_SLIDE_DISTANCE}px)`;
             setTimeout(() => notification.remove(), 300);
         }
-    }, 5000);
+    }, TIMING_CONFIG.NOTIFICATION_AUTO_HIDE);
 }
 
-// Typing animation for hero title
+/**
+ * Typing animation for hero title
+ * Creates a typewriter effect by gradually adding characters
+ * @param {HTMLElement} element - Target element to animate
+ * @param {string} text - Text to type out
+ * @param {number} speed - Typing speed in milliseconds (default: 100)
+ */
 function typeWriter(element, text, speed = 100) {
     if (!element || typeof text !== 'string') {
         console.warn('typeWriter: Invalid element or text provided');
@@ -161,7 +242,10 @@ function typeWriter(element, text, speed = 100) {
     type();
 }
 
-// Real-time clock (only if element exists)
+/**
+ * Updates the current time display
+ * Formats time in 12-hour format with AM/PM
+ */
 function updateTime() {
     const timeElement = document.getElementById('current-time');
     if (timeElement) {
@@ -178,7 +262,7 @@ function updateTime() {
 
 // Update time every second (only if clock element exists)
 if (document.getElementById('current-time')) {
-    setInterval(updateTime, 1000);
+    setInterval(updateTime, TIMING_CONFIG.TIME_UPDATE_INTERVAL);
 }
 
 // Animated text phrases with IBM Plex Mono font - Sequential order starting with "wears many hats"
@@ -236,7 +320,10 @@ function typewriterEffect() {
 }
 
 
-// Simple loader functionality with error handling
+/**
+ * Hide page loader with animation
+ * Provides graceful fade-out transition before removing from DOM
+ */
 function hidePageLoader() {
     const loader = document.getElementById('page-loader');
     if (loader) {
@@ -250,78 +337,49 @@ function hidePageLoader() {
     }
 }
 
-// Prevent loader from showing on page refresh
-if (performance.navigation.type === 1) {
-    // Page was refreshed, hide loader immediately
-    hidePageLoader();
+/**
+ * Determine if a link should trigger the page loader
+ * @param {HTMLAnchorElement} link - Link element to check
+ * @returns {boolean} True if loader should be shown
+ */
+function shouldShowLoaderForLink(link) {
+    const href = link.href;
+    if (!href || href.includes('#')) return false;
+    
+    const isGoingToHome = href.includes('index.html');
+    const isDownloadLink = link.hasAttribute('download') || 
+                          /\.(pdf|doc|zip)$/i.test(href);
+    const isExternalLink = href.startsWith('http') && 
+                          !href.includes(window.location.hostname);
+    const isSocialMediaLink = /(linkedin|instagram|github)\.com|mailto:/.test(href);
+    
+    return !isGoingToHome && !isDownloadLink && !isExternalLink && !isSocialMediaLink;
 }
 
-// Show loader only when navigating to subpages (not home, downloads, or external links)
-document.addEventListener('click', (e) => {
-    if (e.target.tagName === 'A' && e.target.href && !e.target.href.includes('#')) {
-        const isGoingToHome = e.target.href.includes('index.html');
-        const isDownloadLink = e.target.hasAttribute('download') || e.target.href.includes('.pdf') || e.target.href.includes('.doc') || e.target.href.includes('.zip');
-        const isExternalLink = e.target.href.startsWith('http') && !e.target.href.includes(window.location.hostname);
-        const isSocialMediaLink = e.target.href.includes('linkedin.com') || e.target.href.includes('instagram.com') || e.target.href.includes('github.com') || e.target.href.includes('mailto:');
-        
-        if (!isGoingToHome && !isDownloadLink && !isExternalLink && !isSocialMediaLink) {
-            // Show loader for internal subpages only
+/**
+ * Handle page loader on navigation
+ * Shows loader for internal page navigation
+ */
+function handleLoaderNavigation() {
+    // Prevent loader from showing on page refresh
+    if (performance.navigation && performance.navigation.type === 1) {
+        hidePageLoader();
+    }
+
+    // Show loader only when navigating to subpages (not home, downloads, or external links)
+    document.addEventListener('click', (e) => {
+        const link = e.target.closest('a');
+        if (link && shouldShowLoaderForLink(link)) {
             const loader = document.getElementById('page-loader');
             if (loader) {
                 loader.classList.remove('hidden');
             }
         }
-    }
-});
-
-
-// Teleprompter functionality
-const teleprompterMessages = [
-    "Currently coding in TypeScript • Coffee level: Critical • Last commit: 2 minutes ago • Status: In the zone",
-    "Debugging CSS animations • Spotify: Lo-fi hip hop • IDE: VS Code • Focus: 100%",
-    "Building responsive layouts • Weather: Perfect coding weather • Energy: High • Motivation: ∞",
-    "Learning new frameworks • Code quality: Improving • Fun level: Maximum",
-    "Optimizing performance • Stack: React + Node.js • Coffee: Third cup • Productivity: Peak",
-    "Writing clean code • Music: Electronic • Time: 2:47 AM • Status: Still going strong",
-    "Refactoring legacy code • Snack: Dark chocolate • IDE theme: Dark mode • Flow state: Achieved",
-    "Building APIs • Temperature: 72°F • Humidity: Perfect • Code: Bug-free",
-    "Testing edge cases • Browser: Chrome DevTools open • Network: Stable • Progress: Steady",
-    "Deploying to production • Confidence: High • Backup: Ready • Launch: Imminent"
-];
-
-let currentTeleprompterIndex = 0;
-
-function updateTeleprompter() {
-    const teleprompterContent = document.querySelector('.teleprompter-content');
-    if (teleprompterContent) {
-        // Fade out
-        teleprompterContent.style.opacity = '0';
-        
-        setTimeout(() => {
-            // Change content
-            currentTeleprompterIndex = (currentTeleprompterIndex + 1) % teleprompterMessages.length;
-            teleprompterContent.textContent = teleprompterMessages[currentTeleprompterIndex];
-            
-            // Fade in
-            teleprompterContent.style.opacity = '1';
-        }, 500);
-    }
+    });
 }
 
-function initTeleprompter() {
-    const teleprompterContent = document.querySelector('.teleprompter-content');
-    if (teleprompterContent) {
-        // Set initial opacity for smooth transitions
-        teleprompterContent.style.transition = 'opacity 0.5s ease';
-        
-        // Update teleprompter every 8 seconds
-        setInterval(updateTeleprompter, 8000);
-        
-        // Start with a random message
-        currentTeleprompterIndex = Math.floor(Math.random() * teleprompterMessages.length);
-        teleprompterContent.textContent = teleprompterMessages[currentTeleprompterIndex];
-    }
-}
+// Initialize loader navigation handling
+handleLoaderNavigation();
 
 
 // Initialize everything when page loads
@@ -329,23 +387,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize time display
     updateTime();
     
-    // Initialize teleprompter
-    initTeleprompter();
-    
     // Start the typewriter effect
     setTimeout(() => {
         typewriterEffect();
-    }, 2000);
+    }, TIMING_CONFIG.TYPEWRITER_DELAY);
     
     // Hide loader quickly with multiple fallbacks
     setTimeout(() => {
         hidePageLoader();
-    }, 1000);
+    }, TIMING_CONFIG.LOADER_TIMEOUT_SHORT);
     
-    // Fallback: Hide loader after 3 seconds regardless
+    // Fallback: Hide loader after configured time regardless
     setTimeout(() => {
         hidePageLoader();
-    }, 3000);
+    }, TIMING_CONFIG.LOADER_TIMEOUT_LONG);
     
     // Fallback: Hide loader when page is fully loaded
     window.addEventListener('load', () => {
@@ -353,19 +408,34 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Parallax effect for hero section
+/**
+ * Visual effect configuration constants
+ */
+const VISUAL_EFFECTS_CONFIG = {
+    PARALLAX_MULTIPLIER: 0.5,
+    HOVER_SCALE: 1.05,
+    HOVER_TRANSLATE_X: 10
+};
+
+/**
+ * Parallax effect for hero section
+ * Creates a subtle depth effect while scrolling
+ */
 window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
     const hero = document.querySelector('.hero');
     if (hero) {
-        hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+        hero.style.transform = `translateY(${scrolled * VISUAL_EFFECTS_CONFIG.PARALLAX_MULTIPLIER}px)`;
     }
 });
 
-// Skill items hover effect
+/**
+ * Skill items hover effect
+ * Adds interactive feedback on hover
+ */
 document.querySelectorAll('.skill-item').forEach(item => {
     item.addEventListener('mouseenter', () => {
-        item.style.transform = 'scale(1.05) translateX(10px)';
+        item.style.transform = `scale(${VISUAL_EFFECTS_CONFIG.HOVER_SCALE}) translateX(${VISUAL_EFFECTS_CONFIG.HOVER_TRANSLATE_X}px)`;
     });
     
     item.addEventListener('mouseleave', () => {
@@ -375,7 +445,10 @@ document.querySelectorAll('.skill-item').forEach(item => {
 
 // Project cards hover effect (removed 3D tilt)
 
-// Smooth reveal animation for sections
+/**
+ * Smooth reveal animation for sections
+ * Fades in sections as they enter the viewport
+ */
 const revealElements = document.querySelectorAll('section');
 const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -383,7 +456,7 @@ const revealObserver = new IntersectionObserver((entries) => {
             entry.target.classList.add('revealed');
         }
     });
-}, { threshold: 0.1 });
+}, { threshold: ANIMATION_CONFIG.REVEAL_THRESHOLD });
 
 revealElements.forEach(element => {
     revealObserver.observe(element);
@@ -406,14 +479,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalTitle = document.getElementById('modal-title');
     const modalDescription = document.getElementById('modal-description');
     
-    console.log('Modal elements found:', {
-        projectCards: projectCards.length,
-        modal: !!modal,
-        modalBackdrop: !!modalBackdrop,
-        modalClose: !!modalClose,
-        modalTitle: !!modalTitle,
-        modalDescription: !!modalDescription
-    });
 
     // Store full descriptions for modal access and apply fade effect
     function storeFullDescriptions() {
@@ -494,8 +559,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Open modal when project card is clicked
     projectCards.forEach(card => {
         card.addEventListener('click', () => {
-            console.log('Card clicked!'); // Debug log
-            
             const projectId = card.getAttribute('data-project');
             const projectInfo = card.querySelector('.project-info');
             const projectImage = card.querySelector('.project-img');
@@ -522,8 +585,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 images = [imageSrc];
             }
             
-            console.log('Modal elements:', { modal, modalTitle, modalDescription }); // Debug log
-            
             // Update modal content
             modalTitle.textContent = title;
             modalDescription.textContent = fullDescription;
@@ -534,8 +595,6 @@ document.addEventListener('DOMContentLoaded', () => {
             // Show modal
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
-            
-            console.log('Modal should be visible now'); // Debug log
         });
     });
 
