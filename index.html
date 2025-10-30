@@ -44,15 +44,21 @@
                     <span class="animated-text" id="animated-text" style="font-family: 'IBM Plex Mono', monospace;">wears many hats.</span>
                 </div>
             </div>
-            <div class="hero-description">
-                <p>Hi, I'm Stivi — welcome to my corner of the internet. It's part résumé, part portfolio, and entirely me.</p>
+            <div class="hero-photo">
+                <div class="photo-container">
+                    <img src="assets/Canka_Stivi_Photo.jpg" alt="Stivi Canka" class="profile-photo">
+                    <div class="photo-overlay"></div>
+                </div>
+                <div class="hero-description">
+                    <p>Hi, I'm Stivi — welcome to my corner of the internet. It's part résumé, part portfolio, and entirely me.</p>
+                </div>
             </div>
             <div class="hero-navigation">
                 <a href="pages/resume.html" class="nav-item">01. Resume</a>
                 <a href="pages/updates.html" class="nav-item">02. Updates</a>
                 <a href="pages/projects.html" class="nav-item">03. Projects</a>
-                <a href="pages/blog.html" class="nav-item">04. Blog</a>
-                <a href="pages/media.html" class="nav-item">05. Media</a>
+                <a href="pages/blog.html" class="nav-item blog-hidden">04. Blog</a>
+                <a href="pages/media.html" class="nav-item">04. Media</a>
             </div>
             
 
@@ -145,7 +151,6 @@
         // Redirect to mobile version if on mobile device (but wait for DOM to load)
         document.addEventListener('DOMContentLoaded', () => {
             if (isMobile()) {
-                console.log('Mobile device detected, redirecting to mobile version');
                 window.location.href = 'index-mobile.html';
             }
         });
@@ -194,10 +199,5 @@
 
     </script>
     <script src="js/script.js"></script>
-    
-    <script>
-        // Update year automatically
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-    </script>
 </body>
 </html>

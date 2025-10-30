@@ -3,10 +3,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-/* Performance optimizations */
-* {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -64,23 +60,23 @@ body {
 }
 
 .hero-container {
-    max-width: 1000px;
+    max-width: 1100px;
     margin: 0 auto;
     width: 100%;
     display: grid;
     grid-template-areas: 
         "label ."
-        "title navigation"
-        "animation ."
-        "description .";
-    grid-template-columns: 2.5fr 1fr;
-    grid-template-rows: auto auto auto auto;
-    gap: 16px;
+        "title photo"
+        "animation photo"
+        "navigation photo";
+    grid-template-columns: 1.4fr 1fr;
+    grid-template-rows: auto auto 7rem auto;
+    gap: 20px 38px;
     min-height: calc(100vh - 120px);
     align-items: start;
     position: relative;
     z-index: 1;
-    padding: 40px 60px;
+    padding: 40px 60px 60px 60px;
     background: rgba(255, 255, 255, 0.25);
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.4);
@@ -129,6 +125,7 @@ body {
     align-self: start;
     font-family: 'JetBrains Mono', monospace;
     white-space: nowrap;
+    margin-bottom: 0;
 }
 
 .name {
@@ -140,14 +137,40 @@ body {
 
 .animated-text-block {
     margin-bottom: 0;
-    margin-top: 0.07em;
+    margin-top: 0;
     grid-area: animation;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    line-height: 1;
+    height: 7rem;
+    min-height: 7rem;
+    max-height: 7rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding-top: 20px;
+    overflow: visible;
+}
+
+/* Reduce spacing between animated text and navigation */
+.animated-text-block + .hero-navigation {
+    margin-top: -36px;
 }
 
 @media (max-width: 768px) {
     .hero-container {
         padding: 30px 40px;
         max-width: 90%;
+        grid-template-areas: 
+            "label ."
+            "title ."
+            "animation ."
+            "navigation ."
+            "photo ."
+            "description .";
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto auto auto auto;
+        gap: 20px;
     }
     
     .label-accent {
@@ -170,21 +193,37 @@ body {
     
     .hero-navigation {
         margin-top: 0px;
+        margin-left: 0;
+        max-width: 100%;
+        margin-bottom: 15px;
+        gap: 18px;
+        justify-content: center;
+        padding-top: 15px;
+    }
+    
+    .hero-photo {
+        justify-self: center;
+        margin: 20px 0;
+    }
+    
+    .photo-container {
+        width: 200px;
+        height: 250px;
     }
 }
 
 .animated-text {
     font-family: 'Space Mono', monospace;
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     font-weight: 500;
     color: #ffffff;
     background-color: #000000;
     padding: 0.2em 0.4em;
     border-radius: 4px;
-    display: inline-block;
+    display: block;
     line-height: 1.1;
     letter-spacing: -0.02em;
-    margin: 0 0 3rem 0;
+    margin: 0;
     position: relative;
     min-width: fit-content;
     max-width: 400px;
@@ -207,46 +246,144 @@ body {
 }
 
 .hero-description {
-    grid-area: description;
-    max-width: 400px;
+    max-width: 100%;
     width: auto;
-    align-self: start;
     position: relative;
-    margin-top: -1.5rem;
+    margin-top: 0;
+    text-align: left;
+    padding-top: 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
 }
 
 .hero-description p {
-    font-size: 1.1rem;
-    color: #000000;
+    font-size: 1.05rem;
+    color: #333333;
     font-weight: 400;
     font-family: 'JetBrains Mono', monospace;
-    line-height: 1.3;
+    line-height: 1.5;
     margin: 0;
+    max-width: 100%;
+}
+
+/* Hero Photo Styles */
+.hero-photo {
+    grid-area: photo;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    position: relative;
+    z-index: 2;
+    padding-top: 0;
+    gap: 24px;
+    align-self: start;
+    height: 100%;
+    margin-left: auto;
+    width: 100%;
+}
+
+.photo-container {
+    position: relative;
+    width: 320px;
+    height: 400px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.15),
+        0 8px 16px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.05) 50%,
+        rgba(0, 0, 0, 0.05) 100%
+    );
+}
+
+.photo-container:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.2),
+        0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.profile-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 15%;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 16px;
+    image-rendering: auto;
+    image-rendering: smooth;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    will-change: transform;
+}
+
+.photo-container:hover .profile-photo {
+    transform: scale(1.05);
+}
+
+.photo-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.05) 30%,
+        rgba(0, 0, 0, 0.1) 70%,
+        rgba(0, 0, 0, 0.2) 100%
+    );
+    border-radius: 16px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.photo-container:hover .photo-overlay {
+    opacity: 1;
 }
 
 .hero-navigation {
     grid-area: navigation;
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     align-self: start;
     justify-content: flex-start;
-    margin-top: 0;
+    margin-top: -36px;
     gap: 0;
-    max-width: 200px;
+    max-width: 100%;
     justify-self: start;
-    margin-left: 40px;
+    margin-left: 0;
     margin-right: 0;
     text-align: left;
-    padding-top: 0px;
+    padding-top: 0;
+}
+
+/* Hide Blog button on desktop */
+@media (min-width: 769px) {
+    .nav-item.blog-hidden {
+        display: none;
+    }
 }
 
 .nav-item {
     color: #000000;
     text-decoration: none;
-    font-size: 1.1rem;
+    font-size: 1.35rem;
     font-family: 'JetBrains Mono', monospace;
     font-weight: 400;
-    padding: 0.75rem 0;
+    padding: 0.65rem 0;
     position: relative;
     transition: all 0.2s ease;
     border-bottom: 1px solid #e5e7eb;
@@ -1965,11 +2102,13 @@ section {
         padding: 30px 15px;
     }
     
+    /* Shared content container styles for small mobile */
     .resume-content,
     .projects-content,
     .blog-content,
     .updates-content,
-    .photos-content {
+    .photos-content,
+    .media-content {
         padding: 20px 30px;
         max-width: 95%;
     }
@@ -2158,11 +2297,13 @@ section {
         gap: 1rem;
     }
     
+    /* Shared content container styles for mobile */
     .resume-content,
     .projects-content,
     .blog-content,
     .updates-content,
-    .photos-content {
+    .photos-content,
+    .media-content {
         padding: 30px 40px;
         max-width: 90%;
     }
@@ -3277,9 +3418,11 @@ section {
 
 
 /* Mobile responsive for new pages */
+/* Shared content container styles for mobile */
 @media (max-width: 768px) {
     .updates-content,
-    .photos-content {
+    .photos-content,
+    .media-content {
         padding: 20px 15px;
         max-width: 95%;
     }
@@ -3464,20 +3607,20 @@ body.loaded {
 /* Page Footer Styles - Subtle and Low-key */
 .page-footer {
     position: absolute;
-    bottom: 20px;
+    bottom: 0px;
     left: 50%;
     transform: translateX(-50%);
     background: transparent;
     padding: 0.5rem 0;
     text-align: center;
     font-family: 'Space Mono', monospace;
-    font-size: 0.65rem;
+    font-size: 0.85rem;
     color: #999999;
     font-weight: 300;
     margin: 0;
     border-top: none;
     z-index: 10;
-    opacity: 0.7;
+    opacity: 0.95;
     width: auto;
 }
 
@@ -3496,6 +3639,7 @@ body.loaded {
     padding-bottom: 4rem !important;
 }
 
+/* Footer spacing for content containers */
 .page-container .page-footer,
 .blog-content .page-footer,
 .projects-content .page-footer,
@@ -3531,6 +3675,7 @@ body.loaded {
         padding-bottom: 3rem !important;
     }
     
+    /* Footer spacing for content containers on mobile */
     .page-container .page-footer,
     .blog-content .page-footer,
     .projects-content .page-footer,
