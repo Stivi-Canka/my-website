@@ -64,7 +64,7 @@ body {
     margin: 0 auto;
     width: 100%;
     display: grid;
-    grid-template-areas: 
+    grid-template-areas:
         "label ."
         "title photo"
         "animation photo"
@@ -72,7 +72,7 @@ body {
     grid-template-columns: 1.4fr 1fr;
     grid-template-rows: auto auto 7rem auto;
     gap: 20px 38px;
-    min-height: calc(100vh - 120px);
+    height: auto;
     align-items: start;
     position: relative;
     z-index: 1;
@@ -81,7 +81,7 @@ body {
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.4);
     border-radius: 20px;
-    box-shadow: 
+    box-shadow:
         0 20px 60px rgba(0, 0, 0, 0.15),
         0 8px 25px rgba(0, 0, 0, 0.1),
         inset 0 1px 0 rgba(255, 255, 255, 0.6),
