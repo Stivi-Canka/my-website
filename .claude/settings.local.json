@@ -1,8 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(tree:*)",
-      "Bash(ls -la \"C:\\\\Users\\\\stivi\\\\Projects\\\\my-website\\\\css\"\" && ls -la \"C:UsersstiviProjectsmy-websitejs\"\")"
-    ]
-  }
-}
