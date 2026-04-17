@@ -1737,6 +1737,22 @@ section {
     flex-shrink: 0;
 }
 
+.blog-section {
+    margin-bottom: 2.5rem;
+}
+
+.blog-section-header {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #999999;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
 /* Legacy blog styles for backward compatibility */
 .blog-post {
     border-bottom: 2px dashed #666666;
