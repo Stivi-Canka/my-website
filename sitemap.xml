@@ -5,7 +5,7 @@
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
     <url>
         <loc>https://stivicanka.com/</loc>
-        <lastmod>2025-01-29</lastmod>
+        <lastmod>2026-02-09</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
@@ -29,19 +29,25 @@
     </url>
     <url>
         <loc>https://stivicanka.com/pages/blog.html</loc>
-        <lastmod>2025-01-29</lastmod>
+        <lastmod>2026-04-17</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://stivicanka.com/pages/blog-posts/albania-energy-storage-solution.html</loc>
-        <lastmod>2025-01-29</lastmod>
+        <loc>https://stivicanka.com/pages/blog-posts/fourier-epicycles-albanian-eagle.html</loc>
+        <lastmod>2026-02-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://stivicanka.com/pages/blog-posts/proof-by-omission-episode-0.html</loc>
+        <lastmod>2026-04-17</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://stivicanka.com/pages/media.html</loc>
-        <lastmod>2025-01-29</lastmod>
+        <lastmod>2026-02-09</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
