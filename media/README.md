@@ -8,25 +8,26 @@ This directory contains JSON files for media entries that are dynamically loaded
    - Example: `2024-12-25-holiday-feature.json`
 
 2. **Use the template** (`TEMPLATE.json`) as a starting point:
+
    ```json
    {
-       "id": "YYYY-MM-DD-short-description",
-       "date": "YYYY-MM-DD",
-       "title": "Your Media Title Here",
-       "link": "https://example.com/your-link-here",
-       "featured": false
+     "id": "YYYY-MM-DD-short-description",
+     "date": "YYYY-MM-DD",
+     "title": "Your Media Title Here",
+     "link": "https://example.com/your-link-here",
+     "featured": false
    }
    ```
 
 3. **Update the media-loader.js file** to include your new file in the `mediaFiles` array:
    ```javascript
    const mediaFiles = [
-       '2025-01-29-data-scientist.json',
-       '2024-06-01-canada-university.json',
-       '2024-05-29-university-medal.json',
-       '2024-04-09-poster-prize.json',
-       '2018-11-01-gold-medal-asia.json',
-       '2024-12-25-holiday-feature.json', // Add your new file here
+     "2025-01-29-data-scientist.json",
+     "2024-06-01-canada-university.json",
+     "2024-05-29-university-medal.json",
+     "2024-04-09-poster-prize.json",
+     "2018-11-01-gold-medal-asia.json",
+     "2024-12-25-holiday-feature.json", // Add your new file here
    ];
    ```
 

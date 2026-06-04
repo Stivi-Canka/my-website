@@ -1,9 +1,5 @@
 {
   "permissions": {
-    "allow": [
-      "Bash(python:*)",
-      "Bash(dir:*)",
-      "Bash(findstr:*)"
-    ]
+    "allow": ["Bash(python:*)", "Bash(dir:*)", "Bash(findstr:*)"]
   }
 }

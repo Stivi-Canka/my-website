@@ -5,8 +5,6 @@
   "preview": "Together with Arbri Kopliku, we're officially launching Albanian Trailblazers!",
   "fullText": "Together with Arbri Kopliku, we're officially launching Albanian Trailblazers!\n\nAs a youth-led organization dedicated to empowering Albanian students, we are committed to creating educational opportunities and building a supportive community that connects Albanian students studying abroad with their peers back home.\n\nTo learn more about our work, check our website: www.albaniantrailblazers.com",
   "featured": false,
-  "images": [
-    "trailblazer-logo.jpeg"
-  ],
+  "images": ["trailblazer-logo.jpeg"],
   "documents": []
 }

@@ -5,25 +5,28 @@ This is a simple system for managing updates on your website.
 ## How to Add a New Update
 
 ### Step 1: Create the Update File
+
 1. Copy `TEMPLATE.json` to a new file with the naming convention: `YYYY-MM-DD-descriptive-title.json`
 2. Fill in all the required fields
 3. Save the file
 
 ### Step 2: Update the JavaScript
+
 1. Open `js/updates-loader.js`
 2. Find the `updateFiles` array (around line 86)
 3. Add your new filename to the list
 4. Save the file
 
 ### Example:
+
 If you create `2024-12-21-my-new-update.json`, add it to the list like this:
 
 ```javascript
 const updateFiles = [
-    '2021-12-15-new-project-launch.json',
-    '2021-12-15-new-project-launch copy.json',
-    '2024-09-20-open-source-contribution.json',
-    '2024-12-21-my-new-update.json'  // Add your new file here
+  "2021-12-15-new-project-launch.json",
+  "2021-12-15-new-project-launch copy.json",
+  "2024-09-20-open-source-contribution.json",
+  "2024-12-21-my-new-update.json", // Add your new file here
 ];
 ```
 

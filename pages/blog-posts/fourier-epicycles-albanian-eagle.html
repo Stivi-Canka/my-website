@@ -1,278 +1,478 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Drawing the Albanian Eagle with Epicycles: A Journey Through Fourier Analysis and Economics - Stivi Canka">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Drawing the Albanian Eagle with Epicycles: A Journey Through Fourier Analysis and Economics - Stivi Canka"
+    />
     <title>Drawing the Albanian Eagle with Epicycles - Stivi Canka</title>
-    <link rel="icon" type="image/png" href="../../assets/icon.png">
-    <link rel="apple-touch-icon" href="../../assets/icon.png">
-    <link rel="stylesheet" href="../../css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="icon" type="image/png" href="../../assets/icon.png" />
+    <link rel="apple-touch-icon" href="../../assets/icon.png" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
     <!-- KaTeX for beautiful math rendering -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous">
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+    ></script>
     <style>
-        /* Additional styles for the epicycles animation */
-        .epicycles-container {
-            margin: 40px 0;
-            background-color: #fafafa;
-            border-radius: 8px;
-            padding: 30px;
-            border: 1px solid #ddd;
-        }
+      /* Additional styles for the epicycles animation */
+      .epicycles-container {
+        margin: 40px 0;
+        background-color: #fafafa;
+        border-radius: 8px;
+        padding: 30px;
+        border: 1px solid #ddd;
+      }
 
-        .slider-container {
-            text-align: center;
-            margin: 20px 0;
-        }
+      .slider-container {
+        text-align: center;
+        margin: 20px 0;
+      }
 
-        .slider-container label {
-            display: inline-block;
-            margin-right: 10px;
-            font-weight: 500;
-            font-family: 'Inter', sans-serif;
-        }
+      .slider-container label {
+        display: inline-block;
+        margin-right: 10px;
+        font-weight: 500;
+        font-family: "Inter", sans-serif;
+      }
 
-        .slider-container input[type="range"] {
-            width: 300px;
-            vertical-align: middle;
-        }
+      .slider-container input[type="range"] {
+        width: 300px;
+        vertical-align: middle;
+      }
 
-        .slider-container span {
-            display: inline-block;
-            min-width: 30px;
-            margin-left: 10px;
-            font-weight: bold;
-            color: #0066cc;
-        }
+      .slider-container span {
+        display: inline-block;
+        min-width: 30px;
+        margin-left: 10px;
+        font-weight: bold;
+        color: #0066cc;
+      }
 
-        .controls {
-            text-align: center;
-            margin: 20px 0;
-        }
+      .controls {
+        text-align: center;
+        margin: 20px 0;
+      }
 
-        .controls button {
-            background-color: #0066cc;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            margin: 0 5px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-family: 'Inter', sans-serif;
-            transition: background-color 0.3s ease;
-        }
+      .controls button {
+        background-color: #0066cc;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        margin: 0 5px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 1rem;
+        font-family: "Inter", sans-serif;
+        transition: background-color 0.3s ease;
+      }
 
-        .controls button:hover {
-            background-color: #0052a3;
-        }
+      .controls button:hover {
+        background-color: #0052a3;
+      }
 
-        .controls button:disabled {
-            background-color: #ccc;
-            cursor: not-allowed;
-        }
+      .controls button:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+      }
 
-        #epicyclesCanvas {
-            display: block;
-            margin: 30px auto;
-            border: 1px solid #ddd;
-            background-color: white;
-            max-width: 100%;
-            border-radius: 4px;
-        }
+      #epicyclesCanvas {
+        display: block;
+        margin: 30px auto;
+        border: 1px solid #ddd;
+        background-color: white;
+        max-width: 100%;
+        border-radius: 4px;
+      }
 
-        .equation {
-            background-color: #f5f5f5;
-            padding: 20px;
-            margin: 25px 0;
-            overflow-x: auto;
-            border-left: 3px solid #0066cc;
-            text-align: center;
-            font-size: 1.1em;
-        }
+      .equation {
+        background-color: #f5f5f5;
+        padding: 20px;
+        margin: 25px 0;
+        overflow-x: auto;
+        border-left: 3px solid #0066cc;
+        text-align: center;
+        font-size: 1.1em;
+      }
 
-        .equation.highlight {
-            background-color: #ffebeb;
-        }
+      .equation.highlight {
+        background-color: #ffebeb;
+      }
 
-        .animation-note {
-            font-style: italic;
-            color: #666;
-            text-align: center;
-            margin-top: 20px;
-        }
+      .animation-note {
+        font-style: italic;
+        color: #666;
+        text-align: center;
+        margin-top: 20px;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Page Loader -->
     <div class="page-loader" id="page-loader">
-        <div class="spinner">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
+      <div class="spinner">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </div>
 
     <div class="page-container">
-        <div class="blog-post-content">
-            <div class="page-header">
-                <a href="../blog.html" class="back-link">
-                    <span class="material-icons">arrow_back_ios</span>
-                    Back to Blog
-                </a>
-                <div class="section-label">04. Blog</div>
+      <div class="blog-post-content">
+        <div class="page-header">
+          <a href="../blog.html" class="back-link">
+            <span class="material-icons">arrow_back_ios</span>
+            Back to Blog
+          </a>
+          <div class="section-label">04. Blog</div>
+        </div>
+
+        <article class="blog-article">
+          <header class="article-header">
+            <h1 class="article-title">
+              The Genius of Joseph Fourier: From Heat Waves to Visualizing the
+              Albanian Eagle with Epicycles
+            </h1>
+            <div class="article-meta">
+              <div class="article-date">February 9, 2026</div>
+              <div class="article-author">By Stivi Canka</div>
+            </div>
+          </header>
+
+          <div class="article-content">
+            <p class="article-intro">
+              Joseph Fourier is arguably the most important guy you've never
+              heard of (unless you're a mathematician, of course).
+            </p>
+
+            <p>
+              If you're reading this on a screen, listening to music on Spotify,
+              or looking at a JPEG, you're relying on math he developed in the
+              early 1800s. In 1822, Fourier proved something fundamental: any
+              periodic function can be decomposed into a sum of sines and
+              cosines. This idea, which he developed to solve heat flow
+              problems, turned out to be one of the most important discoveries
+              in mathematics.
+            </p>
+
+            <p>
+              I've wanted to build a visualization of this since watching Grant
+              Sanderson's Fourier series video years ago. Never had the time,
+              but finally did it over Christmas.
+            </p>
+
+            <p>
+              Here's what I built: 300 rotating arrows, each spinning at a
+              constant rate, conspiring to draw the Albanian eagle.
+            </p>
+
+            <div class="epicycles-container">
+              <div class="slider-container">
+                <label for="epicycles">Number of epicycles:</label>
+                <input
+                  type="range"
+                  id="epicycles"
+                  min="1"
+                  max="300"
+                  value="150"
+                  step="1"
+                />
+                <span id="epicyclesValue">150</span>
+              </div>
+
+              <div class="controls">
+                <button id="playPause">Pause</button>
+                <button id="reset">Reset</button>
+              </div>
+
+              <canvas id="epicyclesCanvas" width="1200" height="900"></canvas>
+
+              <p class="animation-note">
+                Try the slider. With 10 circles, you get a rough outline. With
+                150+, it's nearly perfect. Each arrow does the simplest possible
+                thing (rotation) yet their sum produces something intricate.
+              </p>
             </div>
 
-            <article class="blog-article">
-                <header class="article-header">
-                    <h1 class="article-title">The Genius of Joseph Fourier: From Heat Waves to Visualizing the Albanian Eagle with Epicycles</h1>
-                    <div class="article-meta">
-                        <div class="article-date">February 9, 2026</div>
-                        <div class="article-author">By Stivi Canka</div>
-                    </div>
-                </header>
+            <h2>The Albanian Eagle</h2>
 
-                <div class="article-content">
-                    <p class="article-intro">Joseph Fourier is arguably the most important guy you've never heard of (unless you're a mathematician, of course).</p>
+            <p>
+              I chose the Albanian eagle for a reason beyond national pride. The
+              double-headed eagle from Albania's flag is a closed curve with
+              sharp corners, smooth arcs, and fine details. Everything that
+              makes Fourier decomposition interesting. The big, slow circles
+              give you the overall wingspan and body. Medium circles add the
+              curve of the feathers and the shape of the heads. The tiny,
+              frantic circles fill in the sharpest points: the talons, the beak
+              tips, the crown. It's a good test case. If the math can handle
+              this, it can handle anything.
+            </p>
 
-                    <p>If you're reading this on a screen, listening to music on Spotify, or looking at a JPEG, you're relying on math he developed in the early 1800s. In 1822, Fourier proved something fundamental: any periodic function can be decomposed into a sum of sines and cosines. This idea, which he developed to solve heat flow problems, turned out to be one of the most important discoveries in mathematics.</p>
+            <h2>Where This Comes From</h2>
 
-                    <p>I've wanted to build a visualization of this since watching Grant Sanderson's Fourier series video years ago. Never had the time, but finally did it over Christmas.</p>
+            <p>
+              Fourier wasn't thinking about drawing pictures when he developed
+              this. He was trying to solve a problem that had stumped
+              mathematicians for decades: predicting how heat flows through
+              objects.
+            </p>
 
-                    <p>Here's what I built: 300 rotating arrows, each spinning at a constant rate, conspiring to draw the Albanian eagle.</p>
+            <p>
+              Here's the setup. You have a metal rod. You know the temperature
+              at every point along it right now. The heat equation is supposed
+              to tell you what happens next, how that temperature pattern
+              evolves over time. But solving it directly for any arbitrary
+              starting temperature? Not so easy.
+            </p>
 
-                    <div class="epicycles-container">
-                        <div class="slider-container">
-                            <label for="epicycles">Number of epicycles:</label>
-                            <input type="range" id="epicycles" min="1" max="300" value="150" step="1">
-                            <span id="epicyclesValue">150</span>
-                        </div>
+            <p>
+              Then Fourier noticed something. If your initial temperature
+              distribution happens to look like a cosine wave (smooth, periodic,
+              flat at the endpoints), the math becomes trivial. The wave just
+              decays exponentially as time passes. Higher frequency waves decay
+              faster, lower frequency waves stick around longer.
+            </p>
 
-                        <div class="controls">
-                            <button id="playPause">Pause</button>
-                            <button id="reset">Reset</button>
-                        </div>
+            <p>
+              But that's not the clever part. The heat equation is linear,
+              meaning if you have two solutions, their sum is also a solution.
+              So if you could somehow express your messy, arbitrary temperature
+              distribution as a sum of these nice cosine waves, you could solve
+              for each wave independently and just add up the results.
+            </p>
 
-                        <canvas id="epicyclesCanvas" width="1200" height="900"></canvas>
+            <p>
+              The natural objection: real temperature distributions don't look
+              like sums of waves. Fourier asked anyway: what if any
+              distribution, no matter how un-wavy, can be broken down this way?
+            </p>
 
-                        <p class="animation-note">
-                            Try the slider. With 10 circles, you get a rough outline. With 150+, it's nearly perfect. Each arrow does the simplest possible thing (rotation) yet their sum produces something intricate.
-                        </p>
-                    </div>
+            <p>
+              Let's consider a step function, the most un-wavy thing imaginable.
+              Two metal rods at different temperatures brought into contact. The
+              left half sits at -1°, the right half at 1°. Flat, discontinuous,
+              the opposite of a smooth wave.
+            </p>
 
-                    <h2>The Albanian Eagle</h2>
+            <div style="text-align: center; margin: 30px 0">
+              <img
+                src="assets/fourier-epicycles/Fourier_series_for_square_wave.gif"
+                alt="Fourier series approximating a square wave"
+                style="
+                  max-width: 100%;
+                  border: 1px solid #ddd;
+                  border-radius: 4px;
+                "
+              />
+            </div>
 
-                    <p>I chose the Albanian eagle for a reason beyond national pride. The double-headed eagle from Albania's flag is a closed curve with sharp corners, smooth arcs, and fine details. Everything that makes Fourier decomposition interesting. The big, slow circles give you the overall wingspan and body. Medium circles add the curve of the feathers and the shape of the heads. The tiny, frantic circles fill in the sharpest points: the talons, the beak tips, the crown. It's a good test case. If the math can handle this, it can handle anything.</p>
+            <p>Fourier claimed you could write this as:</p>
 
-                    <h2>Where This Comes From</h2>
+            <div class="equation">
+              $$f(x) = -\frac{4}{\pi}\left[\cos(\pi x) - \frac{1}{3}\cos(3\pi x)
+              + \frac{1}{5}\cos(5\pi x) - \frac{1}{7}\cos(7\pi x) +
+              \cdots\right]$$
+            </div>
 
-                    <p>Fourier wasn't thinking about drawing pictures when he developed this. He was trying to solve a problem that had stumped mathematicians for decades: predicting how heat flows through objects.</p>
+            <p>
+              And it works. Add the first few terms, you get a rough
+              approximation. Keep adding more, the approximation gets better. In
+              the limit, with infinitely many terms, it's exact.
+            </p>
 
-                    <p>Here's the setup. You have a metal rod. You know the temperature at every point along it right now. The heat equation is supposed to tell you what happens next, how that temperature pattern evolves over time. But solving it directly for any arbitrary starting temperature? Not so easy.</p>
+            <p>
+              This is where things get interesting. Fourier was working with
+              real-valued functions (temperatures along a rod, which are just
+              numbers). But the same idea extends to functions that output
+              complex numbers, which you can think of as points wandering around
+              the 2D plane.
+            </p>
 
-                    <p>Then Fourier noticed something. If your initial temperature distribution happens to look like a cosine wave (smooth, periodic, flat at the endpoints), the math becomes trivial. The wave just decays exponentially as time passes. Higher frequency waves decay faster, lower frequency waves stick around longer.</p>
+            <p>
+              Instead of decomposing into sine and cosine waves, we decompose
+              into rotating vectors in the complex plane. Each vector spins at
+              some integer frequency. Add them tip-to-tail, and the final tip
+              traces out your shape. A drawing is just a function from time to
+              points in 2D space, and Fourier's insight says any such drawing
+              can be built from rotating circles.
+            </p>
 
-                    <p>But that's not the clever part. The heat equation is linear, meaning if you have two solutions, their sum is also a solution. So if you could somehow express your messy, arbitrary temperature distribution as a sum of these nice cosine waves, you could solve for each wave independently and just add up the results.</p>
+            <h2>The Math</h2>
 
-                    <p>The natural objection: real temperature distributions don't look like sums of waves. Fourier asked anyway: what if any distribution, no matter how un-wavy, can be broken down this way?</p>
+            <p>
+              Let $\gamma : [0,1] \to \mathbb{R}^2$ be our closed curve (the
+              eagle's outline). We want to express this as a sum of circular
+              orbits:
+            </p>
 
-                    <p>Let's consider a step function, the most un-wavy thing imaginable. Two metal rods at different temperatures brought into contact. The left half sits at -1°, the right half at 1°. Flat, discontinuous, the opposite of a smooth wave.</p>
+            <div class="equation">
+              $$\gamma(t) = \sum_{k=-n}^{n} \gamma_k(t)$$
+            </div>
 
-                    <div style="text-align: center; margin: 30px 0;">
-                        <img src="assets/fourier-epicycles/Fourier_series_for_square_wave.gif" alt="Fourier series approximating a square wave" style="max-width: 100%; border: 1px solid #ddd; border-radius: 4px;">
-                    </div>
+            <p>
+              where $\gamma_{-n}, \ldots, \gamma_n$ are circular orbits.
+              Negative subscripts rotate clockwise, positive ones
+              counterclockwise. You need both to reconstruct the shape.
+            </p>
 
-                    <p>Fourier claimed you could write this as:</p>
+            <p>
+              Each orbit rotates at some integer frequency $k$, with a certain
+              radius $r_k$ and starting angle $\theta_k$:
+            </p>
 
-                    <div class="equation">
-                        $$f(x) = -\frac{4}{\pi}\left[\cos(\pi x) - \frac{1}{3}\cos(3\pi x) + \frac{1}{5}\cos(5\pi x) - \frac{1}{7}\cos(7\pi x) + \cdots\right]$$
-                    </div>
+            <div class="equation">
+              $$\gamma_k(t) = \begin{bmatrix} r_k \cos(2\pi kt + \theta_k) \\
+              r_k \sin(2\pi kt + \theta_k) \end{bmatrix}$$
+            </div>
 
-                    <p>And it works. Add the first few terms, you get a rough approximation. Keep adding more, the approximation gets better. In the limit, with infinitely many terms, it's exact.</p>
+            <p>
+              Instead of tracking x and y coordinates separately, we can use
+              complex numbers. Think of $z(t) = x(t) + iy(t)$ as a point in the
+              2D plane. With Euler's formula, our rotating vectors become
+              exponentials:
+            </p>
 
-                    <p>This is where things get interesting. Fourier was working with real-valued functions (temperatures along a rod, which are just numbers). But the same idea extends to functions that output complex numbers, which you can think of as points wandering around the 2D plane.</p>
+            <div class="equation">
+              $$z(t) = \sum_{k=-n}^{n} c_k e^{2\pi ikt}$$
+            </div>
 
-                    <p>Instead of decomposing into sine and cosine waves, we decompose into rotating vectors in the complex plane. Each vector spins at some integer frequency. Add them tip-to-tail, and the final tip traces out your shape. A drawing is just a function from time to points in 2D space, and Fourier's insight says any such drawing can be built from rotating circles.</p>
+            <p>
+              where $c_k = r_k e^{i\theta_k}$ encodes both the radius and
+              starting angle.
+            </p>
 
-                    <h2>The Math</h2>
+            <h3>Finding the Coefficients</h3>
 
-                    <p>Let $\gamma : [0,1] \to \mathbb{R}^2$ be our closed curve (the eagle's outline). We want to express this as a sum of circular orbits:</p>
+            <p>
+              Here's the key question: given a shape, how do we find these
+              coefficients?
+            </p>
 
-                    <div class="equation">
-                        $$\gamma(t) = \sum_{k=-n}^{n} \gamma_k(t)$$
-                    </div>
+            <p>
+              To isolate coefficient $c_k$, we multiply our function by
+              $e^{-2\pi ikt}$ and integrate from 0 to 1. Here's why this works:
+            </p>
 
-                    <p>where $\gamma_{-n}, \ldots, \gamma_n$ are circular orbits. Negative subscripts rotate clockwise, positive ones counterclockwise. You need both to reconstruct the shape.</p>
+            <div class="equation">
+              $$\int_0^1 z(t) e^{-2\pi ikt} \, dt = c_k$$
+            </div>
 
-                    <p>Each orbit rotates at some integer frequency $k$, with a certain radius $r_k$ and starting angle $\theta_k$:</p>
+            <p>
+              Why? Because when you integrate $e^{2\pi i(j-k)t}$ from 0 to 1,
+              you get zero for all $j \neq k$. The rotating vectors all average
+              out to zero except the one you're solving for, which stays still
+              after the multiplication.
+            </p>
 
-                    <div class="equation">
-                        $$\gamma_k(t) = \begin{bmatrix} r_k \cos(2\pi kt + \theta_k) \\ r_k \sin(2\pi kt + \theta_k) \end{bmatrix}$$
-                    </div>
+            <p>This is the fundamental formula:</p>
 
-                    <p>Instead of tracking x and y coordinates separately, we can use complex numbers. Think of $z(t) = x(t) + iy(t)$ as a point in the 2D plane. With Euler's formula, our rotating vectors become exponentials:</p>
+            <div class="equation highlight">
+              $$c_k = \int_0^1 z(t) e^{-2\pi ikt} \, dt$$
+            </div>
 
-                    <div class="equation">
-                        $$z(t) = \sum_{k=-n}^{n} c_k e^{2\pi ikt}$$
-                    </div>
+            <p>
+              In practice, I computed this numerically. I sampled 1000
+              evenly-spaced points around the eagle's outline, and for each
+              frequency $k$, I calculated the integral as a sum. That gave me
+              the radius and starting angle for each rotating arrow.
+            </p>
 
-                    <p>where $c_k = r_k e^{i\theta_k}$ encodes both the radius and starting angle.</p>
+            <p>
+              This process is called the Discrete Fourier Transform, one of the
+              most important algorithms in computing.
+            </p>
 
-                    <h3>Finding the Coefficients</h3>
+            <h2>Building It</h2>
 
-                    <p>Here's the key question: given a shape, how do we find these coefficients?</p>
+            <p>
+              I used Python and OpenCV to extract the eagle's outline from an
+              image of the Albanian flag through edge detection. The animation
+              itself is vanilla JavaScript with HTML5 Canvas. For each frame, I
+              compute where each arrow should be, add them tip-to-tail, and draw
+              the result.
+            </p>
 
-                    <p>To isolate coefficient $c_k$, we multiply our function by $e^{-2\pi ikt}$ and integrate from 0 to 1. Here's why this works:</p>
+            <h2>Why This Matters</h2>
 
-                    <div class="equation">
-                        $$\int_0^1 z(t) e^{-2\pi ikt} \, dt = c_k$$
-                    </div>
+            <p>Fourier analysis has an incredible array of applications.</p>
 
-                    <p>Why? Because when you integrate $e^{2\pi i(j-k)t}$ from 0 to 1, you get zero for all $j \neq k$. The rotating vectors all average out to zero except the one you're solving for, which stays still after the multiplication.</p>
+            <p>
+              <strong>Audio</strong> – MP3 compression decomposes sound into
+              frequencies and discards the ones you can't hear
+            </p>
 
-                    <p>This is the fundamental formula:</p>
+            <p>
+              <strong>Images</strong> – JPEGs use a 2D version (Discrete Cosine
+              Transform) to shrink file sizes
+            </p>
 
-                    <div class="equation highlight">
-                        $$c_k = \int_0^1 z(t) e^{-2\pi ikt} \, dt$$
-                    </div>
+            <p>
+              <strong>Signal processing</strong> – WiFi, radio, phone calls all
+              rely on breaking signals into frequencies
+            </p>
 
-                    <p>In practice, I computed this numerically. I sampled 1000 evenly-spaced points around the eagle's outline, and for each frequency $k$, I calculated the integral as a sum. That gave me the radius and starting angle for each rotating arrow.</p>
+            <p>
+              <strong>Medicine</strong> – MRI and CT scans reconstruct images
+              from frequency data
+            </p>
 
-                    <p>This process is called the Discrete Fourier Transform, one of the most important algorithms in computing.</p>
+            <p>
+              The idea shows up everywhere because it's genuinely fundamental;
+              complicated patterns can be understood as sums of simple, periodic
+              pieces.
+            </p>
 
-                    <h2>Building It</h2>
+            <hr
+              style="
+                margin: 40px 0;
+                border: none;
+                border-top: 2px solid #e0e0e0;
+              "
+            />
 
-                    <p>I used Python and OpenCV to extract the eagle's outline from an image of the Albanian flag through edge detection. The animation itself is vanilla JavaScript with HTML5 Canvas. For each frame, I compute where each arrow should be, add them tip-to-tail, and draw the result.</p>
-
-                    <h2>Why This Matters</h2>
-
-                    <p>Fourier analysis has an incredible array of applications.</p>
-
-                    <p><strong>Audio</strong> – MP3 compression decomposes sound into frequencies and discards the ones you can't hear</p>
-
-                    <p><strong>Images</strong> – JPEGs use a 2D version (Discrete Cosine Transform) to shrink file sizes</p>
-
-                    <p><strong>Signal processing</strong> – WiFi, radio, phone calls all rely on breaking signals into frequencies</p>
-
-                    <p><strong>Medicine</strong> – MRI and CT scans reconstruct images from frequency data</p>
-
-                    <p>The idea shows up everywhere because it's genuinely fundamental; complicated patterns can be understood as sums of simple, periodic pieces.</p>
-
-                    <hr style="margin: 40px 0; border: none; border-top: 2px solid #e0e0e0;">
-
-                    <p><strong>Credits:</strong> I wrote this article because <a href="https://www.youtube.com/watch?v=r6sGWTCMz2k" target="_blank">Grant Sanderson's explanation of Fourier Series</a> was so elegant it made me want to build it myself.</p>
-                </div>
-            </article>
-
-        </div>
+            <p>
+              <strong>Credits:</strong> I wrote this article because
+              <a
+                href="https://www.youtube.com/watch?v=r6sGWTCMz2k"
+                target="_blank"
+                >Grant Sanderson's explanation of Fourier Series</a
+              >
+              was so elegant it made me want to build it myself.
+            </p>
+          </div>
+        </article>
+      </div>
     </div>
 
     <script src="../../js/script.js"></script>
@@ -281,15 +481,15 @@
 
     <!-- Render math with KaTeX -->
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            renderMathInElement(document.body, {
-                delimiters: [
-                    {left: "$$", right: "$$", display: true},
-                    {left: "$", right: "$", display: false}
-                ],
-                throwOnError: false
-            });
+      document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.body, {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false },
+          ],
+          throwOnError: false,
         });
+      });
     </script>
-</body>
+  </body>
 </html>
