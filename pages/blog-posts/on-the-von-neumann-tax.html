@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="On the Von Neumann Tax — why separating thinking from remembering costs so much energy, and what etched silicon and memristors do about it. Stivi Canka"
+    />
+    <title>On the Von Neumann Tax - Stivi Canka</title>
+    <meta property="og:title" content="On the Von Neumann Tax" />
+    <meta
+      property="og:description"
+      content="Etching weights into silicon makes a chip fast but frozen. Memristors get the same in-memory efficiency and stay reprogrammable."
+    />
+    <link rel="icon" type="image/png" href="../../assets/icon.png" />
+    <link rel="apple-touch-icon" href="../../assets/icon.png" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Page Loader -->
+    <div class="page-loader" id="page-loader">
+      <div class="spinner">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+
+    <div class="page-container">
+      <div class="blog-post-content">
+        <div class="page-header">
+          <a href="../blog.html" class="back-link">
+            <span class="material-icons">arrow_back_ios</span>
+            Back to Blog
+          </a>
+          <div class="section-label">04. Blog</div>
+        </div>
+
+        <article class="blog-article">
+          <header class="article-header">
+            <h1 class="article-title">On the Von Neumann Tax</h1>
+            <div class="article-meta">
+              <div class="article-date">August 9, 2026</div>
+              <div class="article-author">By Stivi Canka</div>
+            </div>
+          </header>
+
+          <div class="article-content">
+            <p class="article-intro">
+              I have always been fascinated by the Von Neumann tax. Virtually
+              every computer today separates "thinking" from "remembering." The
+              processor does the math, and the memory holds the numbers. Every
+              time a neural network generates a word, it must fetch billions of
+              weights, carry them across a wire, multiply them, and write the
+              answer back. Naturally, this constant shuttling of data leads to
+              massive energy costs and compromised inference speeds.
+            </p>
+
+            <p>
+              This is why I was so intrigued by AMD's acquisition of Taalas
+              (Canada proud :P) a few days ago. Taalas bypasses this memory wall
+              by physically etching AI weights directly into silicon. This way,
+              the chip does not need to load the model, because it
+              <em>is</em> the model. Eliminating that travel time allows an
+              8-billion parameter model to run at 17,000 tokens per second.
+            </p>
+
+            <p>
+              While this is an exciting approach, there is a pretty big catch.
+              Because those weights are literally hardwired into the metal of
+              the chip using ROM, the model is permanently frozen. If you want
+              to update the AI, you cannot just download a software patch; you
+              have to design and manufacture a brand-new physical chip, or at
+              least new metal mask layers.
+            </p>
+
+            <p>
+              This is exactly why memristors might be a more sustainable way to
+              solve the Von Neumann tax. A memristor is essentially a
+              microscopic resistor with a memory. Instead of storing a digital 1
+              or a 0, you can set its physical conductance (the inverse of its
+              resistance) to represent a specific weight in a neural network.
+              When you pass a tiny voltage through it, the memristor's
+              conductance naturally computes the output current via Ohm's law
+              (I = V × G).
+            </p>
+
+            <p>
+              This is a significant shift because it allows for extreme
+              inference speeds, but unlike the permanently etched silicon from
+              Taalas, memristors are completely reprogrammable. By applying a
+              specific programming voltage, you can rewrite the resistance
+              state. You get the exact same in-memory efficiency, but you retain
+              the flexibility of software.
+            </p>
+
+            <p>
+              We have spent decades forcing physics to emulate perfect digital
+              logic to run our models. As we hit the physical and thermal limits
+              of modern hardware, perhaps the next massive leap in AI will come
+              from simply letting nature do the math and giving the crown back
+              to analog computers.
+            </p>
+
+            <p>
+              Here is AMD's press release:
+              <a
+                href="https://www.amd.com/en/newsroom.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                >AMD Newsroom</a
+              >
+            </p>
+          </div>
+        </article>
+      </div>
+    </div>
+    <script src="../../js/script.js"></script>
+  </body>
+</html>

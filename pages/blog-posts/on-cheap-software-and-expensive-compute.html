@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="On Cheap Software and Expensive Compute — notes from a Toronto Tech Week panel with Reynold Xin and Mike Murchison, and why building with less may be the advantage. Stivi Canka"
+    />
+    <title>On Cheap Software and Expensive Compute - Stivi Canka</title>
+    <meta
+      property="og:title"
+      content="On Cheap Software and Expensive Compute"
+    />
+    <meta
+      property="og:description"
+      content="Software keeps getting cheaper to build while compute keeps getting more expensive to run. The gap between those two curves is the interesting part."
+    />
+    <link rel="icon" type="image/png" href="../../assets/icon.png" />
+    <link rel="apple-touch-icon" href="../../assets/icon.png" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Page Loader -->
+    <div class="page-loader" id="page-loader">
+      <div class="spinner">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+
+    <div class="page-container">
+      <div class="blog-post-content">
+        <div class="page-header">
+          <a href="../blog.html" class="back-link">
+            <span class="material-icons">arrow_back_ios</span>
+            Back to Blog
+          </a>
+          <div class="section-label">04. Blog</div>
+        </div>
+
+        <article class="blog-article">
+          <header class="article-header">
+            <h1 class="article-title">
+              On Cheap Software and Expensive Compute
+            </h1>
+            <div class="article-meta">
+              <div class="article-date">July 13, 2026</div>
+              <div class="article-author">By Stivi Canka</div>
+            </div>
+          </header>
+
+          <div class="article-content">
+            <p class="article-intro">
+              A few weeks back, I attended a panel at Toronto Tech Week with
+              Reynold Xin (co-founder of Databricks) and Mike Murchison (CEO of
+              ada CX). I expected a run-of-the-mill AI hype conversation, but I
+              was actually very pleasantly surprised by the lucidity and
+              bluntness of the conversation. I was especially impressed by a
+              point Reynold made.
+            </p>
+
+            <figure class="article-figure">
+              <img
+                src="assets/notes/toronto-tech-week-panel.jpg"
+                alt="Panel at Toronto Tech Week with Reynold Xin of Databricks and Mike Murchison of ada CX on stage with a moderator"
+              />
+              <figcaption>
+                Desjardins Speaker Series at Toronto Tech Week — Reynold Xin
+                (Databricks) and Mike Murchison (ada CX).
+              </figcaption>
+            </figure>
+
+            <p>
+              He pointed out that, while you can argue as much as you want about
+              the efficiency and quality of the code that is being written by AI,
+              it is clear that the industry is really working hard to make
+              software cheaper to build. Yet, the reality is that compute keeps
+              getting more expensive to run. It seems that everyone obsesses over
+              the first curve and underrates the second, even though the gap
+              between the two is probably where the most interesting developments
+              of the next few years are.
+            </p>
+
+            <p>
+              What I keep coming back to is what this means for who ends up
+              winning. We tend to assume abundance is the advantage, that the team
+              with the most GPUs, the most capital, and the most engineers takes
+              it. However, if compute really is the limiting factor, then that
+              logic should invert, and the advantage should lie with whoever can
+              build the most with the least.
+            </p>
+
+            <p>
+              I also think that building with less is more promising than people
+              give it credit for. We already saw a preview of this with the wave
+              of models reaching near-frontier performance at a fraction of the
+              expected training cost, largely through smarter methods rather than
+              bigger clusters, whether that is only activating the parts of a
+              network you actually need, or shrinking models so they run on far
+              cheaper hardware without losing performance. The same logic applies
+              to serving them, where routing simple queries to small models and
+              reserving the expensive ones for genuinely hard problems can make
+              things cheaper and require less infrastructure.
+            </p>
+          </div>
+        </article>
+      </div>
+    </div>
+    <script src="../../js/script.js"></script>
+  </body>
+</html>

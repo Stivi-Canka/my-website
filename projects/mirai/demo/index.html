@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mirai — Weekly Intelligence Briefing</title>
+<meta name="description" content="Weekly intelligence briefing · Sunday, August 2 2026.">
+<link rel="stylesheet" href="assets/mirai.css">
+</head>
+<body>
+
+<div class="sheet">
+
+  <!-- ===================================================== TOP BAR ======= -->
+  <header class="topbar mark">
+    <div class="brand">
+      <span class="glyph">///</span>
+      <b>mirai</b>
+      <span class="divider">|</span>
+      <span class="sub">personal intelligence</span>
+    </div>
+    <div class="topbar-right">
+      <span><span class="dot dot--green pulse"></span>Online</span>
+      <span data-clock>08:14</span>
+    </div>
+  </header>
+
+  <!-- ======================================================== HERO ======= -->
+  <section class="hero">
+    <h1>This week&rsquo;s in, Stivi.</h1>
+    <div class="hero-meta">
+      <div class="lead">Weekly intelligence briefing</div>
+      <div>No. 14 &middot; Sunday, August 2 2026</div>
+      <div>Delivered 08:00 PT &middot; Telegram + email</div>
+    </div>
+  </section>
+
+  <!-- ====================================================== TICKER ======= -->
+  <!-- CONTENT: one .tick per alert-grade event, href jumps to the item below.
+       The second .ticker-track must stay an exact duplicate of the first. -->
+  <div class="ticker" role="region" aria-label="Alert-grade events, July 27&ndash;30">
+    <div class="ticker-label"><span class="dot dot--orange pulse"></span>Alerts</div>
+    <div class="ticker-view">
+      <div class="ticker-rail">
+
+        <div class="ticker-track">
+          <a class="tick" href="#item-nvidia"><span class="dot dot--orange"></span><b>Nvidia &rarr; OpenAI</b> in talks, ~$250B financing guarantee + up to $350B for chips</a>
+          <span class="sep">&middot;</span>
+          <a class="tick" href="#item-moonshot"><span class="dot dot--orange"></span><b>Moonshot AI</b> $3.5B at $35B</a>
+          <span class="sep">&middot;</span>
+          <a class="tick" href="#item-multiverse"><span class="dot dot--blue"></span><b>Multiverse Computing</b> $570M Series C at $1.7B pre</a>
+          <span class="sep">&middot;</span>
+          <a class="tick" href="#item-antares"><span class="dot dot--blue"></span><b>Antares</b> $470M Series C, nuclear microreactors</a>
+          <span class="sep">&middot;</span>
+          <a class="tick" href="#item-ssi"><span class="dot dot--orange"></span><b>Nvidia &rarr; SSI</b> reported $5B for Vera Rubin access</a>
+          <span class="sep">&middot;</span>
+          <a class="tick" href="#also"><span class="dot dot--blue"></span><b>Spur Intelligence</b> $200M from Insight Partners</a>
+          <span class="sep">&middot;</span>
+          <a class="tick" href="#also"><span class="dot dot--blue"></span><b>ThreatLocker</b> $190M Series F</a>
+          <span class="sep">&middot;</span>
+        </div>
+
+        <div class="ticker-track" aria-hidden="true">
+          <a class="tick" href="#item-nvidia" tabindex="-1"><span class="dot dot--orange"></span><b>Nvidia &rarr; OpenAI</b> in talks, ~$250B financing guarantee + up to $350B for chips</a>
+          <span class="sep">&middot;</span>
+          <a class="tick" href="#item-moonshot" tabindex="-1"><span class="dot dot--orange"></span><b>Moonshot AI</b> $3.5B at $35B</a>
+          <span class="sep">&middot;</span>
+          <a class="tick" href="#item-multiverse" tabindex="-1"><span class="dot dot--blue"></span><b>Multiverse Computing</b> $570M Series C at $1.7B pre</a>
+          <span class="sep">&middot;</span>
+          <a class="tick" href="#item-antares" tabindex="-1"><span class="dot dot--blue"></span><b>Antares</b> $470M Series C, nuclear microreactors</a>
+          <span class="sep">&middot;</span>
+          <a class="tick" href="#item-ssi" tabindex="-1"><span class="dot dot--orange"></span><b>Nvidia &rarr; SSI</b> reported $5B for Vera Rubin access</a>
+          <span class="sep">&middot;</span>
+          <a class="tick" href="#also" tabindex="-1"><span class="dot dot--blue"></span><b>Spur Intelligence</b> $200M from Insight Partners</a>
+          <span class="sep">&middot;</span>
+          <a class="tick" href="#also" tabindex="-1"><span class="dot dot--blue"></span><b>ThreatLocker</b> $190M Series F</a>
+          <span class="sep">&middot;</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================================================== BRIEFING ======= -->
+  <section class="briefing">
+
+    <div class="brief-main">
+
+      <!-- ------------------------------------------ 01 UNDERCURRENTS ----- -->
+      <section class="brief-sec brief-sec--first" id="undercurrents">
+        <div class="micro">01 &nbsp;&middot;&nbsp; Undercurrents</div>
+        <!-- CONTENT: standing themes, older than the news cycle. Each card carries
+             its own dateline, so the section needs no "not this week" caveat. -->
+        <h3 class="sec-title">Open weights are being used as a pricing weapon; analog silicon is the long-run cost floor</h3>
+
+        <div class="cards">
+
+          <div class="card" id="item-kimi">
+            <div class="card-top">
+              <span class="micro"><span class="dot dot--orange"></span>Open weights &middot; Jul 27 2026</span>
+            </div>
+            <h3>Frontier scores, published weights, custom licence</h3>
+            <p>
+              Moonshot released Kimi K3's weights on 27 July: 2.8 trillion total
+              parameters with 104 billion active, 16 of 896 experts routed per
+              token, 69 Kimi Delta Attention plus 24 Gated MLA layers, and a
+              1,048,576-token context. It is not uniformly behind the closed
+              labs &mdash; 93.5 on GPQA Diamond against Claude Opus 4.8's 91.0
+              and 91.2 on BrowseComp against Fable 5's 88.0, though 67.5 on
+              DeepSWE against GPT-5.6 Sol's 73.0. The weights ship under
+              Moonshot's own "Kimi K3 License", not a permissive one.
+            </p>
+            <p>
+              The commercial consequence, in Nathan Lambert's phrasing, is that
+              strong open weights "massively reduce the margin potential for the
+              closed labs" &mdash; which starves reinvestment and marks down
+              terminal value, weakening the next fundraise. Read that against
+              section 04, where a chipmaker and a state fund, not venture firms,
+              are setting the prices.
+            </p>
+            <div class="src">
+              <span class="lbl">Read</span>
+              <a href="https://github.com/MoonshotAI/Kimi-K3">github.com/MoonshotAI/Kimi-K3</a> &middot;
+              <a href="https://www.interconnects.ai/p/kimi-k3-the-open-weights-escalation">interconnects.ai</a>
+            </div>
+</div>
+
+          <div class="card" id="item-voxtral">
+            <div class="card-top">
+              <span class="micro"><span class="dot dot--blue"></span>Open weights &middot; March 2026</span>
+            </div>
+            <h3>The same squeeze reached voice a quarter earlier</h3>
+            <p>
+              Mistral's Voxtral TTS took 68.4% against ElevenLabs Flash v2.5's
+              31.6% in a zero-shot voice-cloning preference test, claims parity
+              with ElevenLabs v3 on emotion steering, generates a ten-second
+              sample in about 70 ms, and lists at $0.016 per thousand characters
+              &mdash; against a business built on per-character pricing.
+            </p>
+            <p>
+              The detail worth holding: the weights are CC BY-NC 4.0. Nobody can
+              legally self-host them to compete commercially, so the pressure on
+              ElevenLabs comes from Mistral's own hosted price, with the open
+              release doing the marketing. That is a pricing strategy wearing an
+              open-source licence, and it is the more likely template.
+            </p>
+            <div class="src">
+              <span class="lbl">Read</span>
+              <a href="https://mistral.ai/news/voxtral-tts/">mistral.ai/news/voxtral-tts</a> &middot;
+              <a href="https://techcrunch.com/2026/03/26/mistral-releases-a-new-open-source-model-for-speech-generation/">TechCrunch</a>
+            </div>
+</div>
+
+          <div class="card" id="item-memristor">
+            <div class="card-top">
+              <span class="micro"><span class="dot dot--green"></span>Analog compute &middot; Oct 2025 &ndash; Mar 2026</span>
+            </div>
+            <h3>Memristors do the multiply-accumulate in physics</h3>
+            <p>
+              A memristor holds a weight as physical conductance, so a crossbar
+              of them computes rather than stores: drive a voltage along each
+              row, Ohm's law performs the multiply, Kirchhoff's law sums the
+              currents down the column, and the result appears without the
+              weights ever moving to a compute unit. Data movement, not
+              arithmetic, is where most of the energy and latency in GPU
+              inference goes &mdash; which is why in-memory compute is discussed
+              in orders of magnitude rather than percentages.
+            </p>
+            <p>
+              Two results moved it closer to real. A DGIST-led group reported
+              wafer-scale fabrication of passive memristive crossbars in Nature
+              Communications at roughly 95% average device yield on 4-inch
+              wafers, using CMOS-compatible steps without high-temperature
+              processing &mdash; manufacturing, not physics, has been the
+              blocker. And a bismuth-selenide crossbar
+              (gold&ndash;Bi<sub>2</sub>Se<sub>3</sub>&ndash;titanium junctions)
+              ran a fully analog controller on about 7&nbsp;&micro;W with under
+              1% conductance drift over 10,000 seconds. The honest distance:
+              that controller balanced a lever, not a transformer, and a 4-inch
+              wafer is not 300-millimetre production.
+            </p>
+            <div class="src">
+              <span class="lbl">Read</span>
+              <a href="https://www.nature.com/articles/s41467-025-63831-2">Nature Communications</a> &middot;
+              <a href="https://techxplore.com/news/2026-03-memristor-fully-analog-hardware-based.html">TechXplore</a>
+            </div>
+</div>
+
+        </div>
+      </section>
+
+      <!-- ------------------------------------------- 02 TECHCRUNCH -------- -->
+      <section class="brief-sec" id="tc">
+        <div class="micro">02 &nbsp;&middot;&nbsp; TechCrunch</div>
+        <h3 class="sec-title">The price of frontier compute is now equity plus research access</h3>
+
+        <div class="cards">
+          <div class="card" id="item-ssi">
+            <div class="card-top">
+              <span class="micro"><span class="dot dot--orange"></span>TechCrunch &middot; Jul 27 &middot; Rebecca Bellan</span>
+            </div>
+            <h3>Ilya Sutskever's Safe Superintelligence partners with Nvidia to scale its research</h3>
+            <div class="field">
+              <span class="micro">Terms</span>
+              <span class="fv">Undisclosed investment &mdash; multiple billions per a source familiar with the deal, $5B per Bloomberg &mdash; for access to Nvidia's Vera Rubin platform, expected to raise SSI's compute "by an order of magnitude."</span>
+            </div>
+            <div class="field">
+              <span class="micro">The tell</span>
+              <span class="fv">Nvidia, already an investor, says it signed after obtaining "rare access" into SSI's closely guarded research. A lab with no shipped product paid partly in visibility.</span>
+            </div>
+            <div class="field">
+              <span class="micro">Matched on</span>
+              <span class="fv">AI infrastructure &amp; compute &middot; major venture bets &middot; foundation-model capability</span>
+            </div>
+            <div class="src">
+              <span class="lbl">Read</span>
+              <a href="https://techcrunch.com/2026/07/27/ilya-sutskevers-safe-superintelligence-partners-with-nvidia-to-scale-its-ai-research/">TechCrunch</a> &middot;
+              <a href="https://investor.nvidia.com/news/press-release-details/2026/Ilya-Sutskevers-Safe-Superintelligence-Inc--and-NVIDIA-Announce-Long-Term-Strategic-Partnership/default.aspx">Nvidia press release</a>
+            </div>
+</div>
+        </div>
+      </section>
+
+      <!-- ------------------------------------------ 03 HACKER NEWS -------- -->
+      <section class="brief-sec" id="hn">
+        <div class="micro">03 &nbsp;&middot;&nbsp; Hacker News</div>
+        <h3 class="sec-title">The week's two biggest AI threads were the same argument from opposite sides</h3>
+
+        <div class="cards">
+          <div class="card" id="item-hn">
+            <div class="card-top">
+              <span class="micro"><span class="dot dot--blue"></span>Hacker News &middot; Jul 27 &middot; 1,179 pts &middot; 1,747 comments</span>
+            </div>
+            <h3>Anthropic &mdash; "Our position on open-weights models"</h3>
+            <div class="field">
+              <span class="micro">Why it matters</span>
+              <span class="fv">The most-argued thread of the week by a wide margin: 1,747 comments, more than the points it scored. Anthropic staking a public position on open weights on the very morning Kimi K3's weights went up.</span>
+            </div>
+            <div class="field">
+              <span class="micro">Alongside</span>
+              <span class="fv">"Kimi-K3 on HuggingFace" &mdash; 1,381 pts, 545 comments, same day. The release out-scored the objection to it.</span>
+            </div>
+            <div class="src">
+              <span class="lbl">Read</span>
+              <a href="https://www.anthropic.com/news/position-open-weights-models">anthropic.com</a> &middot;
+              <a href="https://huggingface.co/moonshotai/Kimi-K3">Kimi-K3 on Hugging Face</a>
+            </div>
+</div>
+        </div>
+      </section>
+
+      <!-- ----------------------------------------- 04 FUNDING ROUNDS ------ -->
+      <section class="brief-sec" id="funding">
+        <div class="micro">04 &nbsp;&middot;&nbsp; Funding rounds</div>
+        <!-- CONTENT: section thesis -->
+        <h3 class="sec-title">At least $5.9B across 15 disclosed rounds &mdash; and the biggest numbers weren't set by venture firms</h3>
+        <p>
+          A state fund sits on the cap table behind Moonshot's $35 billion mark; a
+          chipmaker set the terms for both OpenAI and Safe Superintelligence. The
+          largest venture-led round went to compression, not capacity.
+        </p>
+
+        <div class="cards">
+
+          <!-- CONTENT: the week's defining capital event -->
+          <div class="card" id="item-nvidia">
+            <div class="card-top">
+              <span class="micro"><span class="dot dot--orange"></span>StrictlyVC &middot; Jul 27 &middot; WSJ</span>
+            </div>
+            <h3>Nvidia in talks to back OpenAI to the tune of $500B+</h3>
+            <div class="field">
+              <span class="micro">Structure</span>
+              <span class="fv">In talks to guarantee ~$250B of financing for a 10&nbsp;GW Ohio data-centre lease being developed by SoftBank; separately, discussing up to $350B to finance the chips inside.</span>
+            </div>
+            <div class="field">
+              <span class="micro">Why it matters</span>
+              <span class="fv">Vendor financing at sovereign scale. The supplier now guarantees the customer's ability to buy from it, which moves the risk from Nvidia's income statement to its balance sheet.</span>
+            </div>
+            <div class="src">
+              <span class="lbl">Read</span>
+              <a href="https://www.cnbc.com/2026/07/27/nvidia-and-openai-in-talks-for-up-to-250-billion-dollar-ai-backstop.html">CNBC</a> &middot;
+              <a href="https://www.tomshardware.com/tech-industry/data-centers/nvidia-weighs-250-billion-guarantee-so-openai-can-lease-softbanks-10-gigawatt-ohio-campus">Tom's Hardware</a>
+            </div>
+</div>
+
+          <!-- CONTENT: largest round of the week -->
+          <div class="card" id="item-moonshot">
+            <div class="card-top">
+              <span class="micro"><span class="dot dot--orange"></span>StrictlyVC &middot; Jul 29 &middot; Massive Fundings</span>
+            </div>
+            <h3>Moonshot AI &mdash; $3.5B at a $35B valuation</h3>
+            <div class="field">
+              <span class="micro">Investors</span>
+              <span class="fv">Bloomberg puts China's National AI Industry Investment Fund &mdash; an $8.8B state vehicle &mdash; among the leads. Moonshot sought $1&ndash;2B and closed $3.5B.</span>
+            </div>
+            <div class="field">
+              <span class="micro">Why it matters</span>
+              <span class="fv">A state fund helped lead the round for the lab that published Kimi K3's weights two days earlier. The commoditisation in section 01 is state-funded.</span>
+            </div>
+            <div class="src">
+              <span class="lbl">Read</span>
+              <a href="https://www.bloomberg.com/news/articles/2026-07-29/china-s-moonshot-ai-passes-funding-goal-to-hit-35-billion-value">Bloomberg</a>
+            </div>
+</div>
+
+          <!-- CONTENT: largest venture-led round -->
+          <div class="card" id="item-multiverse">
+            <div class="card-top">
+              <span class="micro"><span class="dot dot--blue"></span>StrictlyVC &middot; Jul 27 &middot; Massive Fundings</span>
+            </div>
+            <h3>Multiverse Computing &mdash; $570M Series C at $1.7B pre-money</h3>
+            <div class="field">
+              <span class="micro">What it does</span>
+              <span class="fv">Compresses large models to run on phones, factory equipment, vehicles and telecom infrastructure with no cloud connection. San Sebasti&aacute;n, seven years old.</span>
+            </div>
+            <div class="field">
+              <span class="micro">Why it matters</span>
+              <span class="fv">The counter-trade to the paragraph above: if inference fits on the device, a 10&nbsp;GW lease is a stranded asset. This trade closed while the capacity trade was still being negotiated.</span>
+            </div>
+            <div class="src">
+              <span class="lbl">Read</span>
+              <a href="https://multiversecomputing.com/resources/multiverse-computing-announces-series-c-fundraising-targeting-up-to-usd570m-eur500m-to-power">Company release</a> &middot;
+              <a href="https://siliconangle.com/2026/07/28/ai-model-compression-startup-multiverse-raises-570m-1-7b-valuation/">SiliconANGLE</a>
+            </div>
+</div>
+
+          <!-- CONTENT: third-largest, off the AI axis -->
+          <div class="card" id="item-antares">
+            <div class="card-top">
+              <span class="micro"><span class="dot dot--blue"></span>StrictlyVC &middot; Jul 27 &middot; Massive Fundings</span>
+            </div>
+            <h3>Antares &mdash; $470M Series C for compact nuclear microreactors</h3>
+            <div class="field">
+              <span class="micro">Leads</span>
+              <span class="fv">Co-led by Paradigm and Caffeinated Capital, with Point72 Ventures, Industrious Ventures and Shine Capital. Structured as $370M equity plus $100M debt; total raised now $600M+.</span>
+            </div>
+            <div class="field">
+              <span class="micro">Why it matters</span>
+              <span class="fv">Sold for military installations and space, but the buyer of years of uninterrupted off-grid power is obvious. The EPA said the same week that plants built solely for data centres and cut off from the public grid may fall outside the Acid Rain Program.</span>
+            </div>
+            <div class="src">
+              <span class="lbl">Read</span>
+              <a href="https://techcrunch.com/2026/07/27/antares-raises-470m-to-build-nuclear-reactors-for-the-u-s-military/">TechCrunch</a> &middot;
+              <a href="https://www.businesswire.com/news/home/20260727569769/en/Antares-Raises-$470M-Series-C-to-Deploy-Nuclear-Microreactors-for-Critical-Missions">BusinessWire</a>
+            </div>
+</div>
+
+          <!-- CONTENT: the rest of the week's disclosed rounds, one line each -->
+          <div class="also" id="also">
+            <span class="micro">Also disclosed &nbsp;&middot;&nbsp; source: StrictlyVC funding sections</span>
+            <div class="also-row">
+              <span class="who">Spur Intelligence <span>&mdash; proxy &amp; bot-traffic detection</span></span>
+              <span class="amt">$200M &middot; Insight Partners</span>
+            </div>
+            <div class="also-row">
+              <span class="who">ThreatLocker <span>&mdash; endpoint allow-listing</span></span>
+              <span class="amt">$190M &middot; Series F</span>
+            </div>
+            <div class="also-row">
+              <span class="who">CAIS <span>&mdash; alternatives platform for advisors</span></span>
+              <span class="amt">$170M &middot; Series D at $2B+</span>
+            </div>
+            <div class="also-row">
+              <span class="who">Eliyan <span>&mdash; chiplet interconnect</span></span>
+              <span class="amt">$145M &middot; Series C at $1B</span>
+            </div>
+            <div class="also-row">
+              <span class="who">LearnVector <span>&mdash; Andrew Ng's new learning platform</span></span>
+              <span class="amt">$100M &middot; from Coursera</span>
+            </div>
+            <div class="also-row">
+              <span class="who">Groundcover <span>&mdash; in-cloud observability</span></span>
+              <span class="amt">$100M &middot; Series C at ~$500M</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ------------------------------------------ 05 GITHUB ------------- -->
+      <section class="brief-sec" id="gh">
+        <div class="micro">05 &nbsp;&middot;&nbsp; GitHub Trending</div>
+        <h3 class="sec-title">The most interesting repo of the week</h3>
+
+        <div class="cards">
+          <div class="card" id="item-repo">
+            <div class="card-top">
+              <span class="micro"><span class="dot dot--green"></span>GitHub weekly trending &middot; #4 &middot; +4,659 stars &middot; retrieved Aug 6</span>
+            </div>
+            <h3>lyogavin/airllm</h3>
+            <div class="field">
+              <span class="micro">What</span>
+              <span class="fv">"AirLLM 70B inference with single 4GB GPU" &mdash; layer-wise streaming, no quantisation. Python, 29.5k stars.</span>
+            </div>
+            <div class="field">
+              <span class="micro">The claim</span>
+              <span class="fv">405B Llama 3.1 on 8GB, DeepSeek-V3 at 671B on ~12GB, and Kimi K3 at 2.8T "on under 4GB" by streaming one expert at a time instead of a whole layer.</span>
+            </div>
+            <div class="field">
+              <span class="micro">Why it matters</span>
+              <span class="fv">Published weights only commoditise the frontier if the frontier will run on hardware people own. This is the other half of that trade, and it named Kimi K3 within days of the release.</span>
+            </div>
+            <div class="src">
+              <span class="lbl">Read</span>
+              <a href="https://github.com/lyogavin/airllm">github.com/lyogavin/airllm</a> &middot;
+              <a href="https://github.com/drumih/turbo-fieldfare">drumih/turbo-fieldfare</a>
+            </div>
+</div>
+        </div>
+      </section>
+
+      <div class="brief-foot">
+        <a class="pill" href="issues/2026-08-02.html">
+          Full briefing, No. 14 <span class="arrow">&rarr;</span>
+        </a>
+      </div>
+
+    </div>
+
+    <!-- ------------------------------------------------------- RAIL ----- -->
+    <aside class="rail">
+      <div class="rail-inner">
+        <div class="rail-block">
+          <div class="micro">In this issue</div>
+          <ol class="jump">
+            <li><a href="#item-kimi"><span class="jn">01</span><span class="jt">Kimi K3 ships frontier scores under a custom licence</span></a></li>
+            <li><a href="#item-voxtral"><span class="jn">02</span><span class="jt">Voxtral TTS takes 68.4% against ElevenLabs Flash</span></a></li>
+            <li><a href="#item-memristor"><span class="jn">03</span><span class="jt">Memristor crossbars reach wafer scale</span></a></li>
+            <li><a href="#item-ssi"><span class="jn">04</span><span class="jt">Nvidia buys into SSI for research access</span></a></li>
+            <li><a href="#item-hn"><span class="jn">05</span><span class="jt">Anthropic's open-weights position, 1,747 comments</span></a></li>
+            <li><a href="#item-nvidia"><span class="jn">06</span><span class="jt">Nvidia in talks to back OpenAI, $500B+</span></a></li>
+            <li><a href="#item-moonshot"><span class="jn">07</span><span class="jt">Moonshot AI takes $3.5B at a $35B valuation</span></a></li>
+            <li><a href="#item-multiverse"><span class="jn">08</span><span class="jt">Multiverse takes $570M to shrink models</span></a></li>
+            <li><a href="#item-repo"><span class="jn">09</span><span class="jt">airllm streams Kimi K3 into 4GB</span></a></li>
+          </ol>
+        </div>
+      </div>
+    </aside>
+
+  </section>
+
+  <!-- ======================================================= ARCHIVE ===== -->
+  <section>
+    <div class="arch-head">
+      <h2>Earlier issues</h2>
+      <span class="micro">No. 13 &rarr; No. 6</span>
+    </div>
+
+    <!-- Covers are deliberately inert in this demo: they read and behave as
+         clickable, but there is nothing to open yet. Give one an href and it
+         becomes a real link with no other change. -->
+    <div class="acards">
+      <div class="acard" role="link" tabindex="0" aria-disabled="true">
+        <span class="wm"><i>///</i>mirai</span>
+        <span class="num"><span class="pfx">No.</span>13</span>
+        <span class="dt">Jul 26 2026</span>
+      </div>
+      <div class="acard" role="link" tabindex="0" aria-disabled="true">
+        <span class="wm"><i>///</i>mirai</span>
+        <span class="num"><span class="pfx">No.</span>12</span>
+        <span class="dt">Jul 19 2026</span>
+      </div>
+      <div class="acard" role="link" tabindex="0" aria-disabled="true">
+        <span class="wm"><i>///</i>mirai</span>
+        <span class="num"><span class="pfx">No.</span>11</span>
+        <span class="dt">Jul 12 2026</span>
+      </div>
+      <div class="acard" role="link" tabindex="0" aria-disabled="true">
+        <span class="wm"><i>///</i>mirai</span>
+        <span class="num"><span class="pfx">No.</span>10</span>
+        <span class="dt">Jul 5 2026</span>
+      </div>
+      <div class="acard" role="link" tabindex="0" aria-disabled="true">
+        <span class="wm"><i>///</i>mirai</span>
+        <span class="num"><span class="pfx">No.</span>9</span>
+        <span class="dt">Jun 28 2026</span>
+      </div>
+      <div class="acard" role="link" tabindex="0" aria-disabled="true">
+        <span class="wm"><i>///</i>mirai</span>
+        <span class="num"><span class="pfx">No.</span>8</span>
+        <span class="dt">Jun 21 2026</span>
+      </div>
+      <div class="acard" role="link" tabindex="0" aria-disabled="true">
+        <span class="wm"><i>///</i>mirai</span>
+        <span class="num"><span class="pfx">No.</span>7</span>
+        <span class="dt">Jun 14 2026</span>
+      </div>
+      <div class="acard" role="link" tabindex="0" aria-disabled="true">
+        <span class="wm"><i>///</i>mirai</span>
+        <span class="num"><span class="pfx">No.</span>6</span>
+        <span class="dt">Jun 7 2026</span>
+      </div>
+    </div>
+    <div class="gutter"></div>
+  </section>
+
+  <!-- ======================================================== FOOTER ===== -->
+  <footer class="foot mark">
+    <!-- Run figures are demo values until a real run produces them; the source
+         line lists what this issue actually drew on. -->
+    <div class="footlog"><span class="k">Mirai</span>No. 14 &middot; Weekly intelligence briefing &middot; Sunday, August 2 2026</div>
+    <div class="footlog"><span class="k">Run</span>2026-08-02 08:00:04 &middot; <b>1,284 scanned</b> &middot; <b>22 kept</b> &middot; 4m 12s &middot; <b>$0.41/wk</b> &middot; next sun 08:00 PT</div>
+    <div class="footlog"><span class="k">Sources</span>StrictlyVC Jul 27&ndash;30 &middot; Hacker News &middot; TechCrunch &middot; GitHub Trending</div>
+  </footer>
+
+</div>
+
+<script src="assets/mirai.js"></script>
+</body>
+</html>

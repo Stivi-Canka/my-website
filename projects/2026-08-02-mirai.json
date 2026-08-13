@@ -1,0 +1,27 @@
+{
+  "id": "2026-08-02-mirai",
+  "date": "2026-08-02",
+  "title": "Mirai — Autonomous Intelligence Agent",
+  "role": "Developer",
+  "projectDate": "May 2026 - Present",
+  "badge": "Beta",
+  "description": "Mirai is a self-hosted intelligence agent I built to solve a problem I had personally: staying current on AI, technology, and venture activity meant reading a large volume of sources with a poor signal-to-noise ratio. The system reads those sources continuously, decides what is actually worth knowing, and delivers a written weekly briefing every Sunday at 08:00 PT via Telegram and email, with real-time alerts for events that cannot wait for the weekly cycle.\n\nI designed the pipeline in five stages: hourly Python scrapers pull from each configured source; an LLM layer parses every item into structured form and discards low-value material; surviving items are clustered and synthesized into sections; a scheduled delivery job composes the finished issue and pushes it out through the Telegram Bot API and email, firing alerts immediately when a high-signal item cannot wait for Sunday; and a FastAPI dashboard renders the current issue alongside the full archive. Inference is split deliberately between a local Llama model served through Ollama for high-volume parsing and Claude Haiku where synthesis quality matters, which is what keeps the system running at roughly $0.41 per week.\n\nThe hard part of this problem is judgment, not collection. Deciding what counts as signal, and then explaining why several unrelated-looking items are the same story, is the work, and it is the part I set out to automate. The system has run unattended since May 2026 and I have iterated on output quality against my own daily use of it. Because it runs locally on my own machine rather than as a hosted service, the dashboard is not public; the render embedded here is Issue No. 14.",
+  "demo": {
+    "path": "mirai/demo/index.html",
+    "label": "Live render — Issue No. 14",
+    "note": "Open it full size to read Issue No. 14 in full. The source is not public and one week is published as a sample, so the archive covers are deliberately inert."
+  },
+  "images": [
+    "mirai/01-dashboard-hero.jpg",
+    "mirai/02-issue-synthesis.jpg",
+    "mirai/03-funding-rounds.jpg",
+    "mirai/04-archive.jpg"
+  ],
+  "skills": [
+    "Python/FastAPI",
+    "LLM Pipeline Development",
+    "Local Inference (Ollama/Llama)",
+    "Telegram Bot API",
+    "Linux VPS Deployment"
+  ]
+}

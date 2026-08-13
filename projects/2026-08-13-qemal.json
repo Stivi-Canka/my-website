@@ -1,0 +1,23 @@
+{
+  "id": "2026-08-13-qemal",
+  "date": "2026-08-13",
+  "title": "Qemal — AI Educational Advisor",
+  "role": "Creator",
+  "projectDate": "April 2026 - Present",
+  "badge": "In Development",
+  "description": "Qemal is an AI educational and career advisor I am building for Albanian Trailblazers, the mentorship NGO I founded. It is designed to solve the following problem: generic AI tools answer questions about studying abroad in English and from a global average, which is close to useless for a student in Tirana who needs to know which scholarships actually accept Albanian applicants, whether an Albanian matura qualifies for direct admission in Germany, or which documents require a notarized translation. The people who know those answers are the professionals in our mentor network, and their knowledge was sitting in scattered one-to-one conversations.\n\nI defined the product and built the retrieval pipeline behind it: a Python and LangChain stack over a Chroma vector store holding a curated, Albania-specific knowledge base drawn from mentoring notes, internal guides and university data contributed by our global network. Answers are written in Albanian and grounded only in that corpus rather than the open web, and each one carries the passages it was drawn from, so a student can see whether the advice comes from someone who actually took that path. Retrieval also runs against the mentor directory itself: alongside the answer, Qemal surfaces the mentors whose own route matches each option it just laid out, and lets the student message them directly. The advice and the person who lived it arrive together. I ran beta testing with a pilot group of students and tuned retrieval quality against their feedback.\n\nThe project is still in development, and Qemal will ship privately to students and mentors inside the Albanian Trailblazers network in the coming months.",
+  "images": [
+    "qemal/01-advisor-en.jpg",
+    "qemal/02-grounded-answer-en.jpg",
+    "qemal/03-suggested-mentors-en.jpg",
+    "qemal/04-advisor-sq.jpg",
+    "qemal/05-grounded-answer-sq.jpg"
+  ],
+  "skills": [
+    "Python/LangChain",
+    "RAG Pipeline Development",
+    "Chroma Vector Store",
+    "Product Definition",
+    "Beta Testing & User Research"
+  ]
+}

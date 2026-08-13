@@ -27,6 +27,8 @@ class ProjectLoader {
 
     try {
       const projectFiles = [
+        "2026-08-13-qemal.json",
+        "2026-08-02-mirai.json",
         "2025-02-15-bank-of-canada-governors-challenge.json",
         "albanian-trailblazers.json",
         "2024-09-15-dalhousie-quantitative-finance-society.json",
@@ -102,17 +104,21 @@ class ProjectLoader {
     const imagesJson = JSON.stringify(project.images || []);
     projectCard.setAttribute("data-images", imagesJson);
 
-    const firstImage =
-      project.images && project.images.length > 0
-        ? this.getImagePath(project.images[0])
-        : "https://picsum.photos/400/300?random=" + (index + 1);
+    const hasImages = project.images && project.images.length > 0;
+
+    // A project with no imagery yet gets a neutral placeholder — never a
+    // random stock photo.
+    const visual = hasImages
+      ? `<img src="${this.escapeHtml(this.getImagePath(project.images[0]))}" alt="${this.escapeHtml(project.title)}" class="project-img">`
+      : `<div class="image-placeholder"><i class="fas fa-flask" aria-hidden="true"></i></div>`;
 
     projectCard.innerHTML = `
             <div class="project-image-container">
                 <div class="project-image">
-                    <img src="${this.escapeHtml(firstImage)}" alt="${this.escapeHtml(project.title)}" class="project-img">
+                    ${visual}
                     <div class="image-fade-overlay"></div>
                 </div>
+                ${project.badge ? `<span class="project-badge">${this.escapeHtml(project.badge)}</span>` : ""}
             </div>
             <div class="project-content">
                 <div class="project-info">
@@ -278,6 +284,12 @@ class ProjectLoader {
       this.carouselNext.addEventListener("click", () => this.nextImage());
     }
 
+    window.addEventListener("resize", () => {
+      if (this.modal && this.modal.style.display === "flex") {
+        this.scaleModalEmbed();
+      }
+    });
+
     document.addEventListener("keydown", (e) => {
       if (this.modal && this.modal.style.display === "flex") {
         if (e.key === "Escape") {
@@ -310,6 +322,7 @@ class ProjectLoader {
 
     this.modalDescription.innerHTML = modalContent;
 
+    this.updateModalEmbed(project);
     this.updateModalSkills(project);
     this.updateModalActions(project);
     this.updateModalImage(project);
@@ -318,6 +331,10 @@ class ProjectLoader {
 
     this.modal.style.display = "flex";
     document.body.style.overflow = "hidden";
+
+    // Must run after the modal is visible — the embed is sized from the
+    // rendered width of its container.
+    this.scaleModalEmbed();
   }
 
   closeProjectModal() {
@@ -325,14 +342,35 @@ class ProjectLoader {
 
     this.modal.style.display = "none";
     document.body.style.overflow = "auto";
+
+    // Drop the iframe so the demo's clock and ticker stop running in the
+    // background once the modal is dismissed.
+    const embedContainer = this.modal.querySelector(".modal-embed-section");
+    if (embedContainer) {
+      embedContainer.innerHTML = "";
+      embedContainer.style.display = "none";
+    }
   }
 
   updateModalImage(project) {
-    if (!this.modalImage || !project.images || project.images.length === 0)
-      return;
+    if (!this.modalImage) return;
 
-    const imagePath = this.getImagePath(project.images[this.currentImageIndex]);
-    this.modalImage.src = imagePath;
+    const container = this.modal.querySelector(".modal-image-container");
+    const hasImages = project.images && project.images.length > 0;
+
+    // Without this the modal would keep showing the previously opened
+    // project's screenshot.
+    if (!hasImages) {
+      this.modalImage.removeAttribute("src");
+      this.modalImage.alt = "";
+      if (container) container.style.display = "none";
+      return;
+    }
+
+    if (container) container.style.display = "";
+    this.modalImage.src = this.getImagePath(
+      project.images[this.currentImageIndex],
+    );
     this.modalImage.alt = project.title;
   }
 
@@ -399,6 +437,53 @@ class ProjectLoader {
     } else {
       skillsContainer.style.display = "none";
     }
+  }
+
+  updateModalEmbed(project) {
+    const embedContainer = this.modal.querySelector(".modal-embed-section");
+    if (!embedContainer) return;
+
+    if (!project.demo || !project.demo.path) {
+      embedContainer.innerHTML = "";
+      embedContainer.style.display = "none";
+      return;
+    }
+
+    const url = this.getImagePath(project.demo.path);
+    const label = project.demo.label || "Live render";
+
+    embedContainer.innerHTML = `
+            <div class="modal-embed-label">${this.escapeHtml(label)}</div>
+            <div class="modal-embed-viewport">
+                <iframe class="modal-embed-frame" src="${this.escapeHtml(url)}"
+                        title="${this.escapeHtml(label)}" loading="lazy"
+                        scrolling="no" tabindex="-1" aria-hidden="true"></iframe>
+                <a class="modal-embed-cover" href="${this.escapeHtml(url)}" target="_blank"
+                   rel="noopener noreferrer" aria-label="Open ${this.escapeHtml(label)} full size">
+                    <span class="modal-embed-cta">Open full size <i class="fas fa-external-link-alt"></i></span>
+                </a>
+            </div>
+            ${project.demo.note ? `<div class="modal-embed-note">${this.escapeHtml(project.demo.note)}</div>` : ""}
+        `;
+    embedContainer.style.display = "flex";
+  }
+
+  // The demo is authored for a 1440px viewport, so it is rendered at that width
+  // and scaled down to whatever the modal allows.
+  scaleModalEmbed() {
+    if (!this.modal) return;
+
+    const viewport = this.modal.querySelector(".modal-embed-viewport");
+    const frame = this.modal.querySelector(".modal-embed-frame");
+    if (!viewport || !frame) return;
+
+    const DESIGN_WIDTH = 1440;
+    const DESIGN_HEIGHT = 900;
+    const scale = viewport.clientWidth / DESIGN_WIDTH;
+    if (!scale) return;
+
+    frame.style.setProperty("--embed-scale", scale);
+    viewport.style.height = `${Math.round(DESIGN_HEIGHT * scale)}px`;
   }
 
   updateModalActions(project) {
